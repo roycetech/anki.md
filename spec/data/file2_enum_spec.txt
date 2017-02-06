@@ -1,0 +1,9 @@
+# test file with a single card and a language defined.
+# @lang=js
+
+
+@Tags: EnumU
+front
+
+one
+two
