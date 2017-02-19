@@ -1,5 +1,9 @@
 AllCops:
+  RunRailsCops: true
   TargetRubyVersion: 2.3
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/IndentationConsistency:
+  AllowProtectedAndPrivateMethodsBeIndented: true

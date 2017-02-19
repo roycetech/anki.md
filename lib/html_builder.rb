@@ -161,7 +161,7 @@ class HtmlBuilder
 
   protected
 
-  def each_with_value
-    @tags.each_index { |index| yield @tags[index], @values[index] }
-  end
+    def each_with_value
+      @tags.each_index { |index| yield @tags[index], @values[index] }
+    end
 end

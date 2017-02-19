@@ -28,11 +28,11 @@ module CodeDetector
 
   private
 
-  def to_block_code(array_or_codeblock)
-    if array_or_codeblock.is_a?(Array)
-      array_or_codeblock.join("\n")
-    else
-      array_or_codeblock
+    def to_block_code(array_or_codeblock)
+      if array_or_codeblock.is_a?(Array)
+        array_or_codeblock.join("\n")
+      else
+        array_or_codeblock
+      end
     end
-  end
 end

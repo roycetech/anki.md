@@ -1,9 +1,8 @@
 require './lib/dsl/style_dsl'
 
-
-class StyleList 
-
-  def initialize(tags, element_name='span')
+#
+class StyleList
+  def initialize(tags, element_name = 'span')
     @element_name = element_name
     @list = []
     @tags = tags || []
@@ -17,5 +16,4 @@ class StyleList
   def each
     @list.each { |item| yield item }
   end
-
 end

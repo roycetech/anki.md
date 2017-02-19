@@ -83,51 +83,51 @@ class HtmlGenerator
 
   private # --------------------------------------------------------------------
 
-  def build_figure(back_array)
-    html :div, :main do
-      pre :fig do
-        text back_array.inject('') do |result, element|
-          result + "\n" unless result.empty?
-          result + element
+    def build_figure(back_array)
+      html :div, :main do
+        pre :fig do
+          text back_array.inject('') do |result, element|
+            result + "\n" unless result.empty?
+            result + element
+          end
         end
       end
     end
-  end
 
-  def build_enum(tag_helper, card_block)
-    Code.new(@highlighter).mark_codes(card_block)
+    def build_enum(tag_helper, card_block)
+      Code.new(@highlighter).mark_codes(card_block)
 
-    build_ol(card_block) if tag_helper.ol?
-    build_ul(card_block) if tag_helper.ul?
-  end
+      build_ol(card_block) if tag_helper.ol?
+      build_ul(card_block) if tag_helper.ul?
+    end
 
-  def build_ol(card_block)
-    html :div, :main do
-      ol do
-        card_block.each_line do |line|
-          li line
+    def build_ol(card_block)
+      html :div, :main do
+        ol do
+          card_block.each_line do |line|
+            li line
+          end
         end
       end
     end
-  end
 
-  def build_ul(card_block)
-    html :div, :main do
-      ul do
-        card_block.each_line do |line|
-          li line
+    def build_ul(card_block)
+      html :div, :main do
+        ul do
+          card_block.each_line do |line|
+            li line
+          end
         end
       end
     end
-  end
 
-  def build_back_else(tag_helper, card_block)
-    Code.new(@highlighter).mark_codes(card_block)
-    untagged = tag_helper.untagged? || tag_helper.front_only?
-    tags_html = build_tags(tag_helper) # VERIFY IF NESTED works
-    html :div, :main do
-      merge(tags_html) unless untagged
-      merge(card_block)
+    def build_back_else(tag_helper, card_block)
+      Code.new(@highlighter).mark_codes(card_block)
+      untagged = tag_helper.untagged? || tag_helper.front_only?
+      tags_html = build_tags(tag_helper) # VERIFY IF NESTED works
+      html :div, :main do
+        merge(tags_html) unless untagged
+        merge(card_block)
+      end
     end
-  end
 end # class
