@@ -20,13 +20,13 @@ class RunSelenium
     driver.navigate.to "#{BASE_URL}nexus/"
 
     driver.find_element(:css, 'input.flex-item').clear
-    driver.find_element(:css, 'input.flex-item').send_keys(Config::USERNAME)
+    driver.find_element(:css, 'input.flex-item').send_keys(ENV['ANKI_USERNAME'])
     driver.find_element(:css, 'input[type=\'password\']').clear
 
     driver.find_element(
       :css,
       'input[type=\'password\']'
-    ).send_keys(Config::PASSWORD)
+    ).send_keys(ENV['ANKI_PASSOWRD'])
 
     driver.find_element(:css, '.auth > div:nth-child(4)').click
 
