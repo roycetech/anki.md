@@ -5,7 +5,7 @@ require './lib/mylogger'
 
 LOGGER = MyLogger.instance
 
-SOURCE_FOLDER = '/Users/royce/Dropbox/Documents/Reviewer'.freeze
+SOURCE_FOLDER = ENV['ANKI_FOLDER'].freeze
 
 # Use folder of last modified file
 FILE_MASK = '*.md'.freeze

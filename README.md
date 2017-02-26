@@ -15,6 +15,14 @@ Terminology:
 - _card block_ - it is the line(s) of text that will appear on one side of a card.
 
 
+Setup:
+______
+Set environment variables for:
+- ANKI_USERNAME
+- ANKI_PASSWORD
+- ANKI_FOLDER
+
+
 Notable Codes:
 --------------
 
