@@ -2,7 +2,7 @@
 
 require './bin/main_requires'
 
-# LOGGER = MyLogger.instance.freeze
+LOGGER ||= MyLogger.instance.freeze
 
 #
 class MainClass
