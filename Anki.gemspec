@@ -16,7 +16,4 @@ Gem::Specification.new do |spec|
   spec.executables   = ['bin/main_class']
   spec.test_files    = ['tests/test_NAME.rb']
   spec.require_paths = ['lib']
-
-  spec.ankiusername  = 'royce.com@gmail.com'
-  spec.ankipassword  = 'butete'
 end
