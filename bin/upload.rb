@@ -1,6 +1,5 @@
 # :nocov:
 require './lib/latest_file_finder'
-require './lib/config'
 require 'selenium-webdriver'
 require './lib/mylogger'
 
