@@ -1,6 +1,6 @@
 require './bin/main_class'
 
-PATH = '/Users/royce/Dropbox/Documents/Reviewer'.freeze
+PATH = ENV['ANKI_FOLDER'].freeze
 
 unless UNIT_TEST
   if ARGV.empty? || 'upload' == ARGV[0]

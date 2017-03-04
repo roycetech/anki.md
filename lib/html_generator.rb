@@ -51,6 +51,8 @@ class HtmlGenerator
   end
 
   def format_back(tag_helper, back_array)
+
+    # require 'pry';require 'pry-nav';binding.pry
     card_block = back_array.join("\n")
 
     output = if tag_helper.enum?
@@ -97,7 +99,7 @@ class HtmlGenerator
     def build_enum(tag_helper, card_block)
       Code.new(@highlighter).mark_codes(card_block)
 
-      build_ol(card_block) if tag_helper.ol?
+      return build_ol(card_block) if tag_helper.ol?
       build_ul(card_block) if tag_helper.ul?
     end
 

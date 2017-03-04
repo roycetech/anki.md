@@ -80,13 +80,16 @@ class CollectImportantApi
   def generate_output_filename()
     today = Time.new
 
-    @@outputFilename = '/Users/royce/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv' %
-    [@deckname,
+    @@outputFilename = '%s/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv' %
+    [
+      File.expand_path('~'),
+      @deckname,
       today.year % 1000,
       '%02d' % today.month,
       '%02d' % today.day,
       '%02d' % today.hour,
-      '%02d' % today.min]
+      '%02d' % today.min
+    ]
   end
 
   def front_included(front_card)
@@ -97,7 +100,7 @@ class CollectImportantApi
 
   # Find the path where the last file was modified.
   def find_path(file_mask)
-    finder = LatestFileFinder.new('/Users/royce/Dropbox/Documents/Reviewer', file_mask)
+    finder = LatestFileFinder.new(ENV['ANKI_FOLDER'], file_mask)
     finder.find
     @path = finder.latest_folder
     $logger.debug("Path: #{ @path }")

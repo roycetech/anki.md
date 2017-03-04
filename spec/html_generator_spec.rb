@@ -5,7 +5,7 @@ describe HtmlGenerator do
   subject { HtmlGenerator.new(BaseHighlighter.lang_ruby) }
 
   describe '#format_back' do
-    context 'enum' do
+    context 'unordered enum' do
       let(:tag_helper_enum) { TagHelper.new(tag_line: '@Tags: EnumU') }
       let(:back_list) { %w(line1 line2) }
 
@@ -26,7 +26,31 @@ describe HtmlGenerator do
                                         '</div>'
                                       ]))
       end
-    end
+    end # context
+
+    context 'ordered enum' do
+      let(:tag_helper_enum) { TagHelper.new(tag_line: '@Tags: EnumO') }
+      let(:back_list) { %w(line1 line2) }
+
+      it 'formats a list' do
+        expect(subject.format_back(tag_helper_enum, back_list))
+          .to eq(SpecUtils.join_array([
+                                        '<style>',
+                                        '  div.main {',
+                                        '    font-size: 16pt;',
+                                        '    text-align: left;',
+                                        '  }',
+                                        '</style>',
+                                        '<div class="main">',
+                                        '  <ol>',
+                                        '    <li>line1</li>',
+                                        '    <li>line2</li>',
+                                        '  </ol>',
+                                        '</div>'
+                                      ]))
+      end
+    end # context
+
     context 'none code' do
       let(:tag_helper) { TagHelper.new(tags: []) }
       describe 'bolds text' do

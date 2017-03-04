@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-# gem 'active-support', require: false
-
 group :test do
+  gem 'activesupport', require: false
+  gem 'pry'
+  gem 'pry-nav'
   gem 'rspec'
   gem 'rspec-its'
-  gem 'simplecov', require: false
-  gem 'pry'
-  gem 'activesupport', require: false
+  gem 'rubyzip', '1.2.1'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end

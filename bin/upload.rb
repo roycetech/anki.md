@@ -39,7 +39,7 @@ class RunSelenium
 
     driver.find_element(:css, spreadsheet_css).click
 
-    output_path = '/Users/royce/Desktop/Anki Generated Sources/'
+    output_path = "#{File.expand_path('~')}/Desktop/Anki Generated Sources/"
     fullfilename = LatestFileFinder.new(output_path, '*.tsv').find
     puts fullfilename
 

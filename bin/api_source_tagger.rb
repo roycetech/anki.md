@@ -187,6 +187,6 @@ class TagApiSource
 end
 
 latest_api = LatestFileFinder.new(
-  '/Users/royce/Dropbox/Documents/Reviewer/', '*.api'
+  ENV['ANKI_FOLDER'], '*.api'
 ).find
 TagApiSource.new.execute(latest_api)

@@ -1,5 +1,4 @@
 require './lib/utils/oper_utils'
-# require './lib/assert'
 
 # unit tested
 class TagHelper
@@ -27,7 +26,7 @@ class TagHelper
 
     @enum = @tags.select { |tag| [:EnumO, :EnumU].include? tag }.first
 
-    @front_only = !@tags.select { |tag| FRONT_ONLY.include? tag }.empty?
+    @front_only = @tags.select { |tag| FRONT_ONLY.include? tag }.any?
     @back_only = @tags.include? :BF
   end
 
@@ -75,7 +74,7 @@ class TagHelper
   end
 
   def visible_tags
-    @tags.select { |tag| !HIDDEN.include? tag }
+    @tags.reject { |tag| HIDDEN.include? tag }
   end
 
   def figure?
