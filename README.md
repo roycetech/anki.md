@@ -18,9 +18,13 @@ Terminology:
 Setup:
 ______
 Set environment variables for:
-- ANKI_USERNAME
-- ANKI_PASSWORD
-- ANKI_FOLDER
+
+- `ANKI_FOLDER`
+
+And optionally when uploading to nexus:
+
+- `ANKI_USERNAME`
+- `ANKI_PASSWORD`
 
 
 Notable Codes:
