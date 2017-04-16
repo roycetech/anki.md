@@ -7,7 +7,7 @@ describe Reviewer do
       let(:back) { ['I am front hiding in back'] }
 
       it 'detects' do
-        expect { subject.detect_sellouts(front, back) }\
+        expect { subject.detect_sellouts(front, back) }
           .to change { subject.all_sellout }.from([]).to([front[0]])
       end
     end

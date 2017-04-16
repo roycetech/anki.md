@@ -146,9 +146,6 @@ class HtmlBuilder
     self
   end
 
-  def doo
-  end
-
   def size
     @values.size
   end

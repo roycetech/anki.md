@@ -19,7 +19,7 @@ Setup:
 ______
 Set environment variables for:
 
-- `ANKI_FOLDER`
+- `ANKI_FOLDER` should point to where the cards sources are.
 
 And optionally when uploading to nexus:
 
@@ -41,7 +41,7 @@ highlighter_none.rb
 - Spec Maker (tweaked from someone else's github code)
 
 
-
+File uploading is broken atm to the point where the final button is disabled to be pressed.
 
 Issues:
 -------

@@ -13,7 +13,7 @@ finder = LatestFileFinder.new(SOURCE_FOLDER, FILE_MASK)
 finder.find
 
 PATH = finder.last_modified_folder
-LOGGER.debug("Path: #{PATH}")
+# LOGGER.debug("Path: #{PATH}")
 
 total_cards = 0
 total_files = 0

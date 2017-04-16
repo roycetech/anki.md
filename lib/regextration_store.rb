@@ -42,16 +42,16 @@ module RegextrationStore
 
     private
 
-    def comment(flag_name, regexp)
-      unless instance_variable_get(flag_name)
-        if @regexp
-          @regexp += regexp
-        else
-          @regexp = regexp
+      def comment(flag_name, regexp)
+        unless instance_variable_get(flag_name)
+          if @regexp
+            @regexp += regexp
+          else
+            @regexp = regexp
+          end
+          instance_variable_set(flag_name, true)
         end
-        instance_variable_set(flag_name, true)
+        self
       end
-      self
-    end
   end
 end

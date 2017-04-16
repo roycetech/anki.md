@@ -23,7 +23,10 @@ class Reviewer
     return unless front_array.length == 1
 
     front_card = front_array[0].downcase
-    return unless Regexp.new(front_card) =~ back_array.join("\n").downcase
+    back_joined = back_array.join("\n").downcase
+    return unless Regexp.new(Regexp.escape(front_card))
+                        .match?(back_joined)
+
     @all_sellout.push(front_array[0])
   end
 
