@@ -1,6 +1,6 @@
 # Include angular directives ng-*.
 class AngularHighlighter < WebHighlighter
-  HTML_TAGS = %w(script head).freeze
+  HTML_TAGS = %w[script head].freeze
   ESCAPED_HTML_RE = '&lt;\/?.*?&gt;'.freeze
 
   # @Override.  Capture Angular Expression and Escaped HTML Tags
@@ -34,8 +34,8 @@ class AngularHighlighter < WebHighlighter
     # if pattern =~ input_string
     if %r{&lt;\/?([a-z]+).*?&gt;} =~ input_string
       input_string.gsub!(pattern) do |_|
-        "<span class=\"html\">#{$1}</span>"
-      end 
+        "<span class=\"html\">#{Regexp.last_match(1)}</span>"
+      end
     end
     # return input_string
   end
@@ -46,7 +46,7 @@ class AngularHighlighter < WebHighlighter
 
     input_string.gsub!(pattern_html) do |html|
       html.gsub(pattern_attr) do |_|
-        " <span class=\"attr\">#{$2}</span>"
+        " <span class=\"attr\">#{Regexp.last_match(2)}</span>"
       end
     end
     # return input_string
@@ -55,7 +55,7 @@ class AngularHighlighter < WebHighlighter
   def highlight_angular(input_string)
     re = /(ng-\w+)/
     input_string.gsub!(re) do |_|
-      " <span class=\"attr\">#{$1}</span>"
+      " <span class=\"attr\">#{Regexp.last_match(1)}</span>"
     end
     input_string
   end

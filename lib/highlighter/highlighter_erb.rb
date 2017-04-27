@@ -18,8 +18,7 @@ class ErbHighlighter < BaseHighlighter
     parser.regexter('commandline', /^\$.*$/, lambda_cmd)
   end
 
-  def regexter_singles(parser)
-  end
+  def regexter_singles(parser); end
 
   private # --------------------------------------------------------------------
 

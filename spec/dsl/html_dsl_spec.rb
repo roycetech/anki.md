@@ -108,7 +108,7 @@ describe HTMLDSL do
     subject do
       html :div, :main do
         div :tags do
-          %w(Concept Topic1).each do |tag|
+          %w[Concept Topic1].each do |tag|
             span :tag, tag
           end
         end
@@ -135,7 +135,7 @@ describe HTMLDSL do
       answer_only = html :span, :answer, 'Answer Only'
       html :div, :main do
         ul do
-          %w(One Two).each do |item|
+          %w[One Two].each do |item|
             li item
           end
         end

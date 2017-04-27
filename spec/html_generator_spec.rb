@@ -7,7 +7,7 @@ describe HtmlGenerator do
   describe '#format_back' do
     context 'unordered enum' do
       let(:tag_helper_enum) { TagHelper.new(tag_line: '@Tags: EnumU') }
-      let(:back_list) { %w(line1 line2) }
+      let(:back_list) { %w[line1 line2] }
 
       it 'formats a list' do
         expect(subject.format_back(tag_helper_enum, back_list))\
@@ -30,7 +30,7 @@ describe HtmlGenerator do
 
     context 'ordered enum' do
       let(:tag_helper_enum) { TagHelper.new(tag_line: '@Tags: EnumO') }
-      let(:back_list) { %w(line1 line2) }
+      let(:back_list) { %w[line1 line2] }
 
       it 'formats a list' do
         expect(subject.format_back(tag_helper_enum, back_list))

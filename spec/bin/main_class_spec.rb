@@ -1,6 +1,6 @@
 require './bin/main_class'
 
-#Note:
+# Note:
 describe MainClass do
   let(:source_file) { File.join(File.expand_path('~'), 'dummy.md') }
   let(:test_output) { 'test_output.tsv' }
@@ -92,13 +92,13 @@ describe MainClass do
 
     context 'language not defined' do
       it 'initializes the html_generator' do
-        allow(MetaReader).to receive(:read) { Hash.new }
+        allow(MetaReader).to receive(:read) { {} }
         expect { subject.init_html_generator(nil) }
           .to change { subject.html_generator }.from(nil)
       end
 
       it 'initializes the html_generator with "highlighter for none"' do
-        allow(MetaReader).to receive(:read) { Hash.new }
+        allow(MetaReader).to receive(:read) { {} }
 
         expect(HtmlGenerator).to receive(:new) do |args|
           expect(args.type).to eq('none')

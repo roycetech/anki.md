@@ -128,7 +128,7 @@ describe TagHelper do
   describe '#index_enum' do
     subject { TagHelper.new(tags: [:EnumU]) }
     describe 'given 2 cards' do
-      let(:cards) { %w(card1 card2) }
+      let(:cards) { %w[card1 card2] }
 
       it 'removes "EnumU"' do
         expect { subject.index_enum(cards) }.to \

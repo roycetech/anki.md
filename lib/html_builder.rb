@@ -7,7 +7,7 @@ require './lib/style_builder'
 class HtmlBuilder
   include HtmlUtils
 
-  SPECIAL_TAGS = %w(text lf space br style style_e).freeze
+  SPECIAL_TAGS = %w[text lf space br style style_e].freeze
   TAG_SPAN_E   = 'span_e'.freeze
   TAG_BR       = 'br'.freeze
   LF           = "\n".freeze
@@ -112,7 +112,7 @@ class HtmlBuilder
                       end
 
       last_tag = tag unless SPECIAL_TAGS.include?(tag)
-      last_lfed = %w(lf br).include?(tag)
+      last_lfed = %w[lf br].include?(tag)
     end # each loop
 
     return_value
@@ -141,7 +141,7 @@ class HtmlBuilder
     end
 
     @last_tag = meth_name unless SPECIAL_TAGS.include? meth_name
-    @last_element = meth_name unless %w(lf space).include? meth_name
+    @last_element = meth_name unless %w[lf space].include? meth_name
 
     self
   end
@@ -158,7 +158,7 @@ class HtmlBuilder
 
   protected
 
-    def each_with_value
-      @tags.each_index { |index| yield @tags[index], @values[index] }
-    end
+  def each_with_value
+    @tags.each_index { |index| yield @tags[index], @values[index] }
+  end
 end

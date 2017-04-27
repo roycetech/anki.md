@@ -28,11 +28,11 @@ describe HtmlClassFinder do
     end
 
     it 'can find multiple tags' do
-      expect(subject.find(many_class, 'div')).to eq(%w(key quote))
+      expect(subject.find(many_class, 'div')).to eq(%w[key quote])
     end
 
     it 'returns unqiue tags' do
-      expect(subject.find(many_class, 'div')).to eq(%w(key quote))
+      expect(subject.find(many_class, 'div')).to eq(%w[key quote])
     end
 
     it 'returns an array of class if found' do

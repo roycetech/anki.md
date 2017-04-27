@@ -25,7 +25,7 @@ class BaseHighlighter
   def self.method_missing(name, *args)
     regex = /^lang_(\w+)/
     method_name = name.to_s
-    return super unless method_name =~ regex
+    return super unless method_name.match?(regex)
 
     Object.const_get("#{method_name[regex, 1].capitalize}Highlighter").new
   end
@@ -86,14 +86,11 @@ class BaseHighlighter
   end
 
   # Override to register specific blocks
-  def regexter_blocks(parser)
-  end
+  def regexter_blocks(parser); end
 
-  def regexter_singles(parser)
-  end
+  def regexter_singles(parser); end
 
-  def keywords_file
-  end
+  def keywords_file; end
 
   # Subclass should return regex string
   def comment_regex

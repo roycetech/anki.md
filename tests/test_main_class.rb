@@ -1,8 +1,7 @@
-require "./bin/main_class.rb"
-require "test/unit"
+require './bin/main_class.rb'
+require 'test/unit'
 
 class TestNAME < Test::Unit::TestCase
-
   # def test_count_sentence
   #   @sut = MainClass.new(:source_file => 'tests/source_valid.txt')
   #   assert_equal(1, @sut.count_sentence([], [], ['One Sentence']))
@@ -23,7 +22,4 @@ class TestNAME < Test::Unit::TestCase
   #   @sut.execute
   #   assert_equal(0, @sut.duplicates.length)
   # end
-
-
-
 end

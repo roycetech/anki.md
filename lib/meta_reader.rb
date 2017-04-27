@@ -4,7 +4,7 @@ class MetaReader
   def self.read(file)
     return_value = {}
     while (line = file.gets&.rstrip)
-      if line =~ /^# @/
+      if line.match?(/^# @/)
         key, value = extract(line)
         return_value[key] = value
       end

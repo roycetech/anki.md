@@ -4,8 +4,8 @@ require './lib/utils/oper_utils'
 class TagHelper
   include OperUtils
 
-  HIDDEN = %i(FB BF).freeze
-  FRONT_ONLY = %i(FB Enum Practical Bool Abbr Syntax EnumU EnumO Terminology)
+  HIDDEN = %i[FB BF].freeze
+  FRONT_ONLY = %i[FB Enum Practical Bool Abbr Syntax EnumU EnumO Terminology]
                .freeze
 
   attr_reader :front_only, :back_only, :tags
@@ -24,7 +24,7 @@ class TagHelper
       end
     end
 
-    @enum = @tags.select { |tag| [:EnumO, :EnumU].include? tag }.first
+    @enum = @tags.select { |tag| %i[EnumO EnumU].include? tag }.first
 
     @front_only = @tags.select { |tag| FRONT_ONLY.include? tag }.any?
     @back_only = @tags.include? :BF
