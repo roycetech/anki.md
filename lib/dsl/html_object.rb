@@ -65,7 +65,7 @@ class HtmlObject
   end
 
   def compute_attributes
-    return '' if @classes.blank?
+    return '' if @classes.nil?
 
     @classes.map { |k, v| %(#{k}="#{v}") } .join(' ')
   end

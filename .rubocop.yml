@@ -4,7 +4,7 @@ AllCops:
   # RunRailsCops: true
 
 Rails:
-  Enabled: true
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -13,4 +13,12 @@ Style/IndentationConsistency:
   AllowProtectedAndPrivateMethodsBeIndented: true
 
 Rails/RelativeDateConstant:
-  Enabled: true
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"

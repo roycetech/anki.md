@@ -12,6 +12,7 @@ require './bin/upload' unless $unit_test
 
 require 'CSV'
 
+#
 class CollectImportantApi
   def run
     file_mask = '*.md'
@@ -70,7 +71,7 @@ class CollectImportantApi
   end
 
   def generate_output_filename
-    today = Time.new
+    today = Time.current
 
     @@outputFilename = '%s/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv' %
                        [

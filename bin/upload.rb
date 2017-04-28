@@ -21,7 +21,6 @@ class RunSelenium
     driver.find_element(:css, 'input.flex-item').clear
     driver.find_element(:css, 'input.flex-item').send_keys(ENV['ANKI_USERNAME'])
     driver.find_element(:css, 'input[type=\'password\']').clear
-    puts(ENV['ANKI_PASSWORD'])
 
     driver.find_element(
       :css,

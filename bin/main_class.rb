@@ -21,7 +21,7 @@ class MainClass
   end
 
   def generate_output_filepath
-    today = Time.current
+    today = Time.now
     basename = File.basename(@source_absolute_path, '.*')
     "#{Home_Path}/Desktop/Anki Generated Sources/#{basename} "\
     "#{today.strftime('%Y%b%d_%H%M')}.tsv"

@@ -110,7 +110,7 @@ describe MainClass do
 
   describe '#generate_output_filepath' do
     it 'generates filename based on source and date' do
-      allow(Time).to receive(:now) { Time.new(2000, 2, 3, 4, 5) }
+      allow(Time).to receive(:now) { Time.current(2000, 2, 3, 4, 5) }
       expect(subject.generate_output_filepath)
         .to match(%r{.*\/dummy 2000Feb03_0405.tsv})
     end

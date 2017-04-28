@@ -1,6 +1,6 @@
 # Include angular directives ng-*.
 class AngularHighlighter < WebHighlighter
-  HTML_TAGS = %w[script head].freeze
+  HTML_TAGS = %w(script head).freeze
   ESCAPED_HTML_RE = '&lt;\/?.*?&gt;'.freeze
 
   # @Override.  Capture Angular Expression and Escaped HTML Tags

@@ -2,10 +2,11 @@ require './lib/source_reader'
 require './lib/latest_file_finder'
 require './lib/tag_helper'
 
-RE_TOKENS = /([a-z\?!]+)|\$\/|[+-]?\d/
-EXCLUDE_FRONT = %w[or].freeze
-EXCLUDE_BACK = %w[Ruby e.g].freeze
-BODY_TAGS = %w[true catch false nil yield to_int to_s eval to_i padstr regexp each_char obj at_exit callcc].freeze
+RE_TOKENS = %r{([a-z\?!]+)|\$\/|[+-]?\d}
+EXCLUDE_FRONT = %w(or).freeze
+EXCLUDE_BACK = %w(Ruby e.g).freeze
+BODY_TAGS = %w(true catch false nil yield to_int to_s eval to_i padstr regexp\
+               each_char obj at_exit callcc).freeze
 
 # RE_WORDS = Regexp.quote(BODY_TAGS.join('|') + '|')
 RE_WORDS = BODY_TAGS.join('|')
@@ -53,6 +54,7 @@ RE_TAG2 = /\(?[\w\$]+(\.\w+(?:\(\w*\))?)+||/
 
 $write = true
 
+#
 class TagApiSource
   def execute(filename)
     File.open(filename, 'r') do |file_source|
@@ -100,10 +102,10 @@ class TagApiSource
         end
 
         #  right of =→>
-        re = if !!line[/ → (.+)/]
-               / → (.+)/
-             else
+        re = if line[/ → (.+)/].nil?
                / = (.+)/
+             else
+               / → (.+)/
              end
 
         line.gsub!(re) do |token1|

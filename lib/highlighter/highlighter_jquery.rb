@@ -72,7 +72,7 @@ class JQueryHighlighter < BaseHighlighter
   end
 
   def highlight_html(string_input)
-    tags = %w[li ul p tr h1 h2 h3 h4 h5 h6 table input div]
+    tags = %w(li ul p tr h1 h2 h3 h4 h5 h6 table input div)
     re = Regexp.new('\b(' + tags.join('|') + ')\b')
     string_input.gsub!(re, '<span class="html">\1</span>')
   end

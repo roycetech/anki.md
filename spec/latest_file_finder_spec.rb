@@ -8,7 +8,7 @@ describe LatestFileFinder do
 
     it 'finds the last updated file' do
       allow(File).to receive(:mtime) do |filename|
-        Time.new(2000 + filename[/\w+/][-1].to_i)
+        Time.current(2000 + filename[/\w+/][-1].to_i)
       end
       allow(Dir).to receive(:[]) { ['file1.md', 'file2. md'] }
       allow(Dir).to receive(:entries) { ['.', '..'] }
@@ -26,7 +26,7 @@ describe LatestFileFinder do
 
     it 'finds the last updated file, and its folder' do
       allow(File).to receive(:mtime) do |filename|
-        Time.new(2000 + filename[/\w+/][-1].to_i)
+        Time.current(2000 + filename[/\w+/][-1].to_i)
       end
       allow(File).to receive(:directory?) do |args|
         args[0] == separator
