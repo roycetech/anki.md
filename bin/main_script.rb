@@ -2,6 +2,11 @@ require './bin/main_class'
 
 PATH = ENV['ANKI_FOLDER'].freeze
 
+unless PATH
+  LOGGER.fatal 'Environment "ANKI_FOLDER" needs to be set'
+  exit
+end
+
 unless UNIT_TEST
   if ARGV.empty? || 'upload' == ARGV[0]
     # - Generate a single file
