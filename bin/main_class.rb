@@ -18,6 +18,8 @@ class MainClass
     @reviewer = Reviewer.new
     @source_absolute_path = source_file
     LOGGER.info "File Path: #{@source_absolute_path}"
+
+    Dir.mkdir TSV_Output_Folder unless File.exist? TSV_Output_Folder
   end
 
   def generate_output_filepath
