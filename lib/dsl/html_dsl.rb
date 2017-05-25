@@ -6,7 +6,7 @@ require './lib/dsl/html_dsl_extension'
 class HTMLDSL
   include Indenter
 
-  LEAF_TAGS = %i[br hr].freeze
+  LEAF_TAGS = %i(br hr).freeze
   LF = "\n".freeze # Used only to alias, not to dry.
 
   def initialize(html_object, &block)
@@ -31,8 +31,7 @@ class HTMLDSL
   end
 
   def respond_to_missing?(name, _include_all)
-    return true if name.match?(/\w+/)
-    false
+    name.match? /\w+/
   end
 
   def method_missing(name, *args, &block)

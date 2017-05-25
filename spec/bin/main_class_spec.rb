@@ -59,9 +59,7 @@ describe MainClass do
       allow(subject).to receive(:init_html_generator)
       # allow(File).to receive(:path) { source_file }
 
-      allow(CSV).to receive(:open) do |&block|
-        block.call
-      end
+      allow(CSV).to receive(:open) { |&block| block.call }
 
       expect(subject).to receive(:process_card).at_least(1)
 

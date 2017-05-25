@@ -7,7 +7,7 @@ class MyLogger
 
   RAKE = 3
   SUBLIMETEXT = 4 # 2 & 3
-  METHODS = %i[info debug warn level debug?].freeze
+  METHODS = %i(info debug warn level debug?).freeze
 
   def initialize
     @logger = Logger.new(STDOUT)

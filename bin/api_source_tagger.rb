@@ -52,7 +52,7 @@ puts R.join('|')
 RE_TAG = Regexp.new(R.join('|'))
 RE_TAG2 = /\(?[\w\$]+(\.\w+(?:\(\w*\))?)+||/
 
-$write = true
+WRITE_FLAG = true
 
 #
 class TagApiSource
@@ -64,11 +64,11 @@ class TagApiSource
           card_count += 1
 
           tag_front(file_output, front)
-          file_output << "\n" if $write
+          file_output << "\n" if WRITE_FLAG
 
           # bs for skip back, fs for front skip
           if tags.include?'bs'
-            if $write
+            if WRITE_FLAG
               back.each do |element|
                 file_output << element.to_s
               end
@@ -77,7 +77,7 @@ class TagApiSource
           else
             tag_back(file_output, back)
           end
-          file_output << "\n\n" if $write
+          file_output << "\n\n" if WRITE_FLAG
         end
 
         puts "#{filename}: #{card_count}"
@@ -120,8 +120,8 @@ class TagApiSource
       else
         line.replace("`#{line}`")
       end
-      file_output << line if $write
-      file_output << "\n" if $write
+      file_output << line if WRITE_FLAG
+      file_output << "\n" if WRITE_FLAG
       # puts line
     end
   end
@@ -132,25 +132,23 @@ class TagApiSource
         file_output << line if $write
       else
 
-        if !!line[/ See/]
+        if !line[/ See/].nil?
           line = line[0, line.index(/ See/)]
-        elsif !!line[/\(see/]
+        elsif !line[/\(see/].nil?
           line[/ \(see.*?\)/] = ''
-        elsif !!line[/ Also see/]
+        elsif !line[/ Also see/].nil?
           line = line[0, line.index(/ Also see/)]
-        elsif !!line[/ For examples/]
+        elsif !line[/ For examples/].nil?
           line = line[0, line.index(/ For examples/)]
         end
 
         back = line.gsub(RE_TAG) do |token|
           if token == line[/[A-Z][a-z]+/]
             token
+          elsif EXCLUDE_BACK.include? token
+            token
           else
-            if EXCLUDE_BACK.include? token
-              token
-            else
-              "`#{token}`"
-            end
+            "`#{token}`"
           end
         end
 
@@ -164,7 +162,7 @@ class TagApiSource
           @words = []
         end
 
-        if $write
+        if WRITE_FLAG
           file_output << back
           file_output << "\n"
         end
@@ -173,7 +171,5 @@ class TagApiSource
   end
 end
 
-latest_api = LatestFileFinder.new(
-  ENV['ANKI_FOLDER'], '*.api'
-).find
+latest_api = LatestFileFinder.new(ENV['ANKI_FOLDER'], '*.api').find
 TagApiSource.new.execute(latest_api)

@@ -19,7 +19,9 @@ class WebHighlighter < JsHighlighter
     parser.regexter('html', pattern, lambda { |blocktoken, _re_name|
       parser_inner = SourceParser.new
 
-      parser.regexter('expression', /\{\{.*?\}\}/, lambda { |blocktoken, _regex_name|
+      parser.regexter('expression',
+                      /\{\{.*?\}\}/,
+                      lambda { |blocktoken, _regex_name|
         blocktoken  # no markup
       })
 
@@ -40,7 +42,8 @@ class WebHighlighter < JsHighlighter
                             })
 
       parser_inner.regexter('attr', /[\w\-]+/,
-                            ->(token, _re_name) { HtmlUtil.span('attr', token) })
+                            ->(token, _re_name) { HtmlUtil.span('attr', token) }
+                           )
 
       parser_inner.parse(blocktoken)
     })

@@ -23,12 +23,13 @@ class GitHighlighter < BaseHighlighter
 
     ->(arg) { arg * 2 }
 
-    parser.regexter('optional', /\[.+?\]/, ->(token, _regexp) { wrap(:opt, token) })
+    parser.regexter('optional',
+                    /\[.+?\]/,
+                    ->(token, _regexp) { wrap(:opt, token) })
 
-    parser.regexter('option', /-[a-z-]+\b/,
-                    lambda do |token, _regexp|
-                      wrap(:opt, token)
-                    end)
+    parser.regexter('option',
+                    /-[a-z-]+\b/,
+                    ->(token, _regexp) { wrap(:opt, token) })
 
     parser.regexter('git', /\bgit\b/, ->(token, _regexp) { wrap(:cmd, token) })
   end

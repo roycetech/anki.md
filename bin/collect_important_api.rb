@@ -14,11 +14,13 @@ require 'CSV'
 
 #
 class CollectImportantApi
+  LOGGER = MyLogger.instance.freeze
+
   def run
     file_mask = '*.md'
     find_path(file_mask)
     read_list
-    $logger.info("Deckname: #{@deckname}")
+    LOGGER.info("Deckname: #{@deckname}")
     generate_output_filename
     @@highlighter = BaseHighlighter
 
@@ -36,7 +38,7 @@ class CollectImportantApi
 
         if @@highlighter.class == Class
           language = meta_map['lang']
-          $logger.debug("Language: #{language}")
+          LOGGER.debug("Language: #{language}")
           @@highlighter = if language
                             @@highlighter.send("lang_#{language.downcase}")
                           else
@@ -65,13 +67,13 @@ class CollectImportantApi
       main_list.each { |element| csv << element }
     end
 
-    $logger.info("Total: #{total}")
+    LOGGER.info("Total: #{total}")
 
     RunSelenium.execute
   end
 
   def generate_output_filename
-    today = Time.current
+    today = Time.now
 
     @@outputFilename = '%s/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv' %
                        [
@@ -95,7 +97,7 @@ class CollectImportantApi
     finder = LatestFileFinder.new(ENV['ANKI_FOLDER'], file_mask)
     finder.find
     @path = finder.latest_folder
-    $logger.debug("Path: #{@path}")
+    LOGGER.debug("Path: #{@path}")
   end
 
   def read_list
@@ -104,9 +106,13 @@ class CollectImportantApi
       meta_map = MetaReader.read(file)
       @deckname = meta_map['filename']
 
-      while line = file.gets
+      file.each_line do |line|
         @list.push(line.strip) if line[0] != '#' && !line.chomp.empty?
       end
+
+      # while line = file.gets
+      #   @list.push(line.strip) if line[0] != '#' && !line.chomp.empty?
+      # end
     end
   end
 
@@ -116,28 +122,35 @@ class CollectImportantApi
     back.pop if back[-1] == ''
     tag_helper.find_multi(back)
 
-    shown_tags = tag_helper.visible_tags
     html_helper = HtmlHelper.new(@@highlighter, tag_helper, front, back)
     lst = [html_helper.front_html, html_helper.back_html]
 
-    if tag_helper.untagged?
-      lst.push 'untagged'
-    else
-
-      tags_numbered = tags.map do |tag|
-        count = @tag_count_map[tag]
-        if count == 1
-          tag
-        else
-          "#{tag}(#{count})"
-        end
-      end
-
-      lst.push tags_numbered.join(',')
-    end
-
+    lst = card_tagger(tag_helper, lst)
     main_list.push(lst)
   end
-end
+
+  private
+
+  def card_tagger(tag_helper, list)
+    if tag_helper.untagged?
+      list.push 'untagged'
+    else
+      tags_numbered = number_tag(tag_helper.tags)
+      list.push tags_numbered.join(',')
+    end
+    list
+  end
+
+  def number_tag(tags)
+    tags.map do |tag|
+      count = @tag_count_map[tag]
+      if count == 1
+        tag
+      else
+        "#{tag}(#{count})"
+      end
+    end
+  end
+end # CollectImportantApi
 
 CollectImportantApi.new.run
