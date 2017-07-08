@@ -60,7 +60,6 @@ describe MainClass do
       # allow(File).to receive(:path) { source_file }
 
       allow(CSV).to receive(:open) { |&block| block.call }
-
       expect(subject).to receive(:process_card).at_least(1)
 
       subject.execute

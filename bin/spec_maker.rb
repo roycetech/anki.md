@@ -92,17 +92,15 @@ class SimpleRubyParser
   end
 
   def grab_classes(line)
-    if line.match?(/^class/)
-      self.private_found = false
-      found_lines << line
-    end
+    return unless line.match?(/^class/)
+    self.private_found = false
+    found_lines << line
   end
 
   def grab_modules(line)
-    if line.match?(/^module/)
-      self.private_found = false
-      found_lines << line
-    end
+    return unless line.match?(/^module/)
+    self.private_found = false
+    found_lines << line
   end
 
   def grab_methods(line)
