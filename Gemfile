@@ -7,6 +7,6 @@ group :test do
   gem 'rspec'
   gem 'rspec-its'
   gem 'rubyzip', '1.2.1'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.0'
   gem 'simplecov', require: false
 end

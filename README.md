@@ -47,6 +47,7 @@ Issues:
 -------
 - Highlighting style should be card side independent.
 - Support for highlighting theme.
+- Running the upload runs into error if you have selenium 3.x gem.
 
 
 # Testing
@@ -76,5 +77,6 @@ $ rspec spec/utils/html_utils_spec.rb
 **Note**: Logging needs to be set to `WARN` for it to be logged.
 
 Coverage at: `coverage/index.html#_AllFiles`
+
 
 

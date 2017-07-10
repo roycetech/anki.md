@@ -25,7 +25,7 @@ class Reviewer
     front_card = front_array[0].downcase
     back_joined = back_array.join("\n").downcase
     return unless Regexp.new(Regexp.escape(front_card))
-                        .match?(back_joined)
+                        .match(back_joined)
 
     @all_sellout.push(front_array[0])
   end
