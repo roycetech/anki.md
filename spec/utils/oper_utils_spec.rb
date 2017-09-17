@@ -1,9 +1,9 @@
 describe OperUtils do
   describe '#xor' do
-    subject(:module) {
+    subject(:module) do
       sut = Object.new
       sut.extend(OperUtils)
-    }
+    end
 
     describe 'returns' do
       context 'same boolean' do

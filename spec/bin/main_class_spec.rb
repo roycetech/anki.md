@@ -1,6 +1,6 @@
 require './bin/main_class'
 
-#Note:
+# Note:
 describe MainClass do
   let(:source_file) { File.join(File.expand_path('~'), 'dummy.md') }
   let(:test_output) { 'test_output.tsv' }
@@ -59,10 +59,7 @@ describe MainClass do
       allow(subject).to receive(:init_html_generator)
       # allow(File).to receive(:path) { source_file }
 
-      allow(CSV).to receive(:open) do |&block|
-        block.call
-      end
-
+      allow(CSV).to receive(:open) { |&block| block.call }
       expect(subject).to receive(:process_card).at_least(1)
 
       subject.execute
@@ -92,13 +89,13 @@ describe MainClass do
 
     context 'language not defined' do
       it 'initializes the html_generator' do
-        allow(MetaReader).to receive(:read) { Hash.new }
+        allow(MetaReader).to receive(:read) { {} }
         expect { subject.init_html_generator(nil) }
           .to change { subject.html_generator }.from(nil)
       end
 
       it 'initializes the html_generator with "highlighter for none"' do
-        allow(MetaReader).to receive(:read) { Hash.new }
+        allow(MetaReader).to receive(:read) { {} }
 
         expect(HtmlGenerator).to receive(:new) do |args|
           expect(args.type).to eq('none')
@@ -110,7 +107,7 @@ describe MainClass do
 
   describe '#generate_output_filepath' do
     it 'generates filename based on source and date' do
-      allow(Time).to receive(:now) { Time.new(2000, 2, 3, 4, 5) }
+      allow(Time).to receive(:now) { Time.current(2000, 2, 3, 4, 5) }
       expect(subject.generate_output_filepath)
         .to match(%r{.*\/dummy 2000Feb03_0405.tsv})
     end

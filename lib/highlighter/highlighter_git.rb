@@ -19,17 +19,18 @@ class GitHighlighter < BaseHighlighter
   end
 
   def regexter_singles(parser)
-      # /b results in no match. 
+    # /b results in no match.
 
     ->(arg) { arg * 2 }
 
-      parser.regexter('optional', /\[.+?\]/, ->(token, regexp) { wrap(:opt, token) })
+    parser.regexter('optional',
+                    /\[.+?\]/,
+                    ->(token, _regexp) { wrap(:opt, token) })
 
-    parser.regexter('option', /-[a-z-]+\b/,
-        lambda do |token, regexp|
-          wrap(:opt, token)
-        end)
+    parser.regexter('option',
+                    /-[a-z-]+\b/,
+                    ->(token, _regexp) { wrap(:opt, token) })
 
-      parser.regexter('git', /\bgit\b/, lambda { |token, regexp| wrap(:cmd, token) })
+    parser.regexter('git', /\bgit\b/, ->(token, _regexp) { wrap(:cmd, token) })
   end
 end

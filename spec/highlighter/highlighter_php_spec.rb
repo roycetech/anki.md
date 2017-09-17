@@ -6,7 +6,7 @@ describe PhpHighlighter do
     # TODO:
     # it_behaves_like('html highlighter', PhpHighlighter.new )
 
-    let(:perl_comment) { 'Test # comment' } 
+    let(:perl_comment) { 'Test # comment' }
     it 'highlights perl comment' do
       expect { subject.mark_known_codes(perl_comment) }\
         .to change { perl_comment }\

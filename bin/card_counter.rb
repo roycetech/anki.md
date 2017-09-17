@@ -20,7 +20,7 @@ total_files = 0
 total_api = 0
 
 Dir[File.join(PATH, FILE_MASK)].each do |filename|
-  next unless filename =~ /\.(?:md|api)$/m
+  next unless filename.match?(/\.(?:md|api)$/m)
 
   total_files += 1
   File.open(filename, 'r') do |file|

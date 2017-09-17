@@ -79,7 +79,7 @@ class HtmlBuilder
       value = value.to_s if value
       is_open_tag = !tag.include?('_')
       unless SPECIAL_TAGS.include?(tag)
-        do_indent = level > 0 && last_lfed
+        do_indent = level.positive? && last_lfed
         if is_open_tag
           return_value += ' ' * (2 * level) if do_indent
           level += 1
@@ -158,7 +158,7 @@ class HtmlBuilder
 
   protected
 
-    def each_with_value
-      @tags.each_index { |index| yield @tags[index], @values[index] }
-    end
+  def each_with_value
+    @tags.each_index { |index| yield @tags[index], @values[index] }
+  end
 end

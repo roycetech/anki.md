@@ -23,7 +23,7 @@ describe HtmlGenerator do
   describe '#build_tags' do
     subject { HtmlGenerator.new(NoneHighlighter.new) }
     context 'given :Concept, :List' do
-      let(:tag_helper) { TagHelper.new(tags: [:Concept, :List]) }
+      let(:tag_helper) { TagHelper.new(tags: %i(Concept List)) }
       it 'returns in html' do
         expect(subject.build_tags(tag_helper)).to eq([
           '<div class="tags">',

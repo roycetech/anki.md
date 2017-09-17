@@ -4,7 +4,7 @@ class HtmlObject
   attr_accessor :level, :element_name, :classes, :contents
 
   LF = "\n".freeze # Used only to alias, not to DRY.
-  LEAF_TAGS = [:br, :hr].freeze
+  LEAF_TAGS = %i(br hr).freeze
 
   # single for single-line, options to hold single style classes.
   def initialize(element_name = 'html',
@@ -65,7 +65,7 @@ class HtmlObject
   end
 
   def compute_attributes
-    return '' if @classes.nil? || @classes.empty?
+    return '' if @classes.nil?
 
     @classes.map { |k, v| %(#{k}="#{v}") } .join(' ')
   end

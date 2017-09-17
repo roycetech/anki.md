@@ -3,7 +3,7 @@ require './spec/support/shared_examples_html_highlighter'
 
 describe AspHighlighter do
   describe '#highlight_all' do
-    context 'given commandline' do      
+    context 'given commandline' do
       it 'span.cmdline the whole line' do
         expect(subject.mark_known_codes('$ dotnet'))
           .to eq('<span class="cmdline">$ <span class="cmd">dotnet</span>'\

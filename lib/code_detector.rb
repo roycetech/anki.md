@@ -19,20 +19,20 @@ module CodeDetector
 
   # param can be code block or string array
   def well?(array_or_codeblock)
-    to_block_code(array_or_codeblock) =~ Code::RE_WELL ? true : false
+    to_block_code(array_or_codeblock).match?(Code::RE_WELL) ? true : false
   end
 
   def command?(code_block)
-    code_block =~ Code::RE_CMD_WELL ? true : false
+    code_block.match?(Code::RE_CMD_WELL) ? true : false
   end
 
   private
 
-    def to_block_code(array_or_codeblock)
-      if array_or_codeblock.is_a?(Array)
-        array_or_codeblock.join("\n")
-      else
-        array_or_codeblock
-      end
+  def to_block_code(array_or_codeblock)
+    if array_or_codeblock.is_a?(Array)
+      array_or_codeblock.join("\n")
+    else
+      array_or_codeblock
     end
+  end
 end

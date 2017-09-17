@@ -70,7 +70,6 @@ class RunSelenium
     sleep 5
 
     puts 'Success!'
-    driver.quit
   end
 end
 # :nocov:

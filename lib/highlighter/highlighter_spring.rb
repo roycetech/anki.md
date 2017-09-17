@@ -20,9 +20,9 @@ class SpringHighlighter < JavaHighlighter
     <            # match open angle bracket
     (            # capture as first group
       \/?        # optionally followed by forward slash
-      [a-z]+     # match
+      [a-z]+     # match 1 or more lowercased alphabet
       :          # match the text ':'
-      [a-zA-Z-]+ # match 1 or more, lower or upper cased alphabet
+      [a-zA-Z-]+ # match 1 or more, lower or uppercased alphabet
       \/?        # optionally followed by forward slash
     )
     >            # match closing angle bracket

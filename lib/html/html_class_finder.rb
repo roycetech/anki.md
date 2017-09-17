@@ -6,7 +6,7 @@ module HtmlClassFinder
   def find(string, element)
     list = []
     string.scan(/#{element} class="([\w\s]+)"/).collect do |item|
-      if item[0] =~ /\s/
+      if item[0].match?(/\s/)
         list += item[0].split(' ')
       else
         list << item[0]

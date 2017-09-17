@@ -24,7 +24,7 @@ class TagHelper
       end
     end
 
-    @enum = @tags.select { |tag| [:EnumO, :EnumU].include? tag }.first
+    @enum = @tags.select { |tag| %i(EnumO EnumU).include? tag }.first
 
     @front_only = @tags.select { |tag| FRONT_ONLY.include? tag }.any?
     @back_only = @tags.include? :BF
