@@ -26,6 +26,8 @@ And optionally when uploading to nexus:
 - `ANKI_USERNAME`
 - `ANKI_PASSWORD`
 
+Use Ruby version 2.4 as 2.3 seems to throw an exception around `match` method improperly used.
+
 
 Notable Codes:
 --------------
