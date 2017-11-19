@@ -1,4 +1,3 @@
-# unit tested.
 module Assert
   #
   class AssertionError < StandardError

@@ -28,16 +28,12 @@ class AngularHighlighter < WebHighlighter
   end
 
   def highlight_escaped_angled_tags(input_string)
-    tag = HTML_TAGS.join('|')
-    pattern = %r{(&lt;(?:#{tag}))(?:&gt;)?|(&lt;\/(?:#{tag})(?:&gt;))}
+    tag = HTML_TAGS.join '|'
 
-    # if pattern =~ input_string
-    if %r{&lt;\/?([a-z]+).*?&gt;} =~ input_string
-      input_string.gsub!(pattern) do |_|
-        "<span class=\"html\">#{Regexp.last_match(1)}</span>"
-      end
-    end
-    # return input_string
+    return unless %r{&lt;\/?([a-z]+).*?&gt;} =~ input_string
+
+    pattern = %r{(&lt;(?:#{tag}))(?:&gt;)?|(&lt;\/(?:#{tag})(?:&gt;))}
+    input_string.gsub!(pattern) { |_| "<span class=\"html\">#{$1}</span>" }
   end
 
   def highlight_attribute(input_string)
