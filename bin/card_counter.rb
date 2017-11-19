@@ -6,6 +6,11 @@ require './lib/mylogger'
 LOGGER = MyLogger.instance
 
 SOURCE_FOLDER = ENV['ANKI_FOLDER'].freeze
+LOGGER.debug("Source Folder: #{SOURCE_FOLDER}")
+unless SOURCE_FOLDER
+  puts 'Environment variable for SOURCE_FOLDER is not set'
+  exit
+end
 
 # Use folder of last modified file
 FILE_MASK = '*.md'.freeze
@@ -13,7 +18,6 @@ finder = LatestFileFinder.new(SOURCE_FOLDER, FILE_MASK)
 finder.find
 
 PATH = finder.last_modified_folder
-# LOGGER.debug("Path: #{PATH}")
 
 total_cards = 0
 total_files = 0
