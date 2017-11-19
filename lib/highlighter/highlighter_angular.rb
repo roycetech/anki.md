@@ -1,6 +1,6 @@
 # Include angular directives ng-*.
 class AngularHighlighter < WebHighlighter
-  HTML_TAGS = %w(script head).freeze
+  HTML_TAGS = %w[script head].freeze
   ESCAPED_HTML_RE = '&lt;\/?.*?&gt;'.freeze
 
   # @Override.  Capture Angular Expression and Escaped HTML Tags
@@ -15,7 +15,7 @@ class AngularHighlighter < WebHighlighter
 
   # @Override
   def highlight_special_token(input_string)
-    $logger.debug(input_string)
+    LOGGER.debug(input_string)
 
     input_string.gsub!(/ng-\w+/) do |token|
       highlight_angular(token)
@@ -33,7 +33,9 @@ class AngularHighlighter < WebHighlighter
     return unless %r{&lt;\/?([a-z]+).*?&gt;} =~ input_string
 
     pattern = %r{(&lt;(?:#{tag}))(?:&gt;)?|(&lt;\/(?:#{tag})(?:&gt;))}
-    input_string.gsub!(pattern) { |_| "<span class=\"html\">#{$1}</span>" }
+    input_string.gsub!(pattern) do |_|
+      "<span class=\"html\">#{Regexp.last_match(1)}</span>"
+    end
   end
 
   def highlight_attribute(input_string)
@@ -45,7 +47,6 @@ class AngularHighlighter < WebHighlighter
         " <span class=\"attr\">#{Regexp.last_match(2)}</span>"
       end
     end
-    # return input_string
   end
 
   def highlight_angular(input_string)

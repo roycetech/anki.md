@@ -12,7 +12,9 @@ require './lib/source_parser'
 # Base class will handle keyword, and comment, provided sub class supply
 # keyword list and line comment markers.
 class BaseHighlighter
-  include Wrappexter, Markdown, RegexpUtils
+  include Wrappexter
+  include Markdown
+  include RegexpUtils
 
   attr_reader :type
 
