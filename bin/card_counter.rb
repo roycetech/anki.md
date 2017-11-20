@@ -23,7 +23,7 @@ total_cards = 0
 total_files = 0
 total_api = 0
 
-Dir[File.join(PATH, FILE_MASK)].each do |filename|
+Dir[File.join(PATH, FILE_MASK)].sort.each do |filename|
   next unless filename.match?(/\.(?:md|api)$/m)
 
   total_files += 1
@@ -32,7 +32,7 @@ Dir[File.join(PATH, FILE_MASK)].each do |filename|
     SourceReader.new(file).each_card do |_, _, _|
       card_count += 1
     end
-    total_api += card_count if filename.include?'-API-'
+    total_api += card_count if filename.include?('-API-')
     puts "#{filename}: #{card_count}"
     total_cards += card_count
   end
