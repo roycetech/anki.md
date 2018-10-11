@@ -11,9 +11,13 @@ require './lib/html/style_list'
 require './lib/highlighter/highlighters_enum'
 require './lib/theme_store'
 
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ClassLength
 # Do bunch of apply, then invoke end_apply to close the style tag
 class StyleGenerator
-  include HtmlClassFinder, HighlightersEnum, CodeDetector
+  include HtmlClassFinder
+  include HighlightersEnum
+  include CodeDetector
 
   def initialize(tag_helper, lang = 'none')
     @tag_helper = tag_helper
