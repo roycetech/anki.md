@@ -1,11 +1,10 @@
-#
 class CardPrinter
   LOGGER = MyLogger.instance.freeze
 
   RE_STYLESS = /
     <div    # starting from <div tag.
     [\d\D]* # match absolutely everything.
-  /xm
+  /xm.freeze
 
   # :nocov:
   # Used for debugging only

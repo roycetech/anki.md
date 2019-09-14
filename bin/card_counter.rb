@@ -5,7 +5,7 @@ require './lib/mylogger'
 
 LOGGER = MyLogger.instance
 
-SOURCE_FOLDER = ENV['ANKI_FOLDER'].freeze
+SOURCE_FOLDER = ENV['ANKI_FOLDER']
 LOGGER.debug("Source Folder: #{SOURCE_FOLDER}")
 unless SOURCE_FOLDER
   puts 'Environment variable for SOURCE_FOLDER is not set'

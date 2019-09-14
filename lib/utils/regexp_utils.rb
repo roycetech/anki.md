@@ -1,5 +1,5 @@
 module RegexpUtils
-  RE_QUOTE_SINGLE = /'(?:(?:\\')|[^'])*?'/
-  RE_QUOTE_DOUBLE = /"(?:(?:\\")|[^"])*?"/
-  RE_QUOTE_BOTH = /(["'])(?:(?:\\\1)|[^\1])*?\1/
+  RE_QUOTE_SINGLE = /'(?:(?:\\')|[^'])*?'/.freeze
+  RE_QUOTE_DOUBLE = /"(?:(?:\\")|[^"])*?"/.freeze
+  RE_QUOTE_BOTH = /(["'])(?:(?:\\\1)|[^\1])*?\1/.freeze
 end

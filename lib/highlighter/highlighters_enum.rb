@@ -6,6 +6,7 @@ module HighlightersEnum
   JS     = 'js'.freeze
   RUBY   = 'ruby'.freeze
   PYTHON = 'python'.freeze
+  GOLANG    = 'golang'.freeze
   GIT    = 'git'.freeze
   SPRING = 'spring'.freeze
   SQL    = 'sql'.freeze

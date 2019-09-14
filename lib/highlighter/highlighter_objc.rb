@@ -1,7 +1,6 @@
 require './lib/highlighter/base_highlighter'
 require './lib/regextration_store'
 
-#
 class ObjCHighlighter < BaseHighlighter
   def keywords_file
     'keywords_objc.txt'

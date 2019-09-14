@@ -1,4 +1,3 @@
-#
 module Indenter
   def indent(i)
     '  ' * i

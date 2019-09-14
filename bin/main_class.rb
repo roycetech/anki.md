@@ -4,7 +4,6 @@ require './bin/main_requires'
 
 LOGGER ||= MyLogger.instance.freeze
 
-#
 class MainClass
   # Configuration
   Home_Path = File.expand_path('~')

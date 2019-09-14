@@ -1,4 +1,3 @@
-#
 class GitHighlighter < BaseHighlighter
   include RegexpUtils
 

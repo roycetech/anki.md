@@ -10,6 +10,7 @@ class EachCardState
     @line_number = 0
 
     return unless args.length > 2
+
     @tags, @front, @back = args
   end
 
@@ -68,11 +69,11 @@ class EachCardState
   end
 
   def remove_back_last_blank
-    @back.pop if @back.last && @back.last.empty?
+    @back.pop if @back.last&.empty?
   end
 
   def start_card(condition)
-    @card_began = condition unless @card_began
+    @card_began ||= condition
   end
 
   def to_a

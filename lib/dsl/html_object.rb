@@ -4,7 +4,7 @@ class HtmlObject
   attr_accessor :level, :element_name, :classes, :contents
 
   LF = "\n".freeze # Used only to alias, not to DRY.
-  LEAF_TAGS = %i(br hr).freeze
+  LEAF_TAGS = %i[br hr].freeze
 
   # single for single-line, options to hold single style classes.
   def initialize(element_name = 'html',
@@ -41,6 +41,7 @@ class HtmlObject
 
     return "#{tag}\n" if LEAF_TAGS.include?(@element_name.to_sym) && !@first
     return tag if LEAF_TAGS.include?(@element_name.to_sym)
+
     compute_output(tag)
   end
 

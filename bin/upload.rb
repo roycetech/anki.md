@@ -3,7 +3,6 @@ require './lib/latest_file_finder'
 require 'selenium-webdriver'
 require './lib/mylogger'
 
-#
 class RunSelenium
   BASE_URL = 'https://api.ankiapp.com/'.freeze
   LOGGER = MyLogger.instance
@@ -63,7 +62,7 @@ class RunSelenium
       sleep 3
       alert = driver.switch_to.alert
       alert.accept
-    rescue
+    rescue StandardError
       puts('WARNING: Did not find alert')
     end
 

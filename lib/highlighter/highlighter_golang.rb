@@ -1,12 +1,12 @@
 require './lib/highlighter/base_highlighter'
 
-class JavaHighlighter < BaseHighlighter
-  def initialize(param = HighlightersEnum::JAVA)
+class GolangHighlighter < BaseHighlighter
+  def initialize(param = HighlightersEnum::GOLANG)
     super
   end
 
   def keywords_file
-    'keywords_java.txt'
+    'keywords_golang.txt'
   end
 
   def comment_regex

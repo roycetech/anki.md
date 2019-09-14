@@ -1,4 +1,3 @@
-
 require './lib/dsl/html_dsl'
 require './lib/dsl/style_dsl'
 require './lib/utils/html_utils'
@@ -16,9 +15,9 @@ require './lib/html/colorizer_template'
 require './lib/code_detector'
 require './lib/cmd_detector'
 
-#
 class HtmlGenerator
-  include HtmlUtils, Markdown
+  include Markdown
+  include HtmlUtils
   attr_reader :front_html, :back_html, :highlighter
 
   def initialize(highlighter)
@@ -99,6 +98,7 @@ class HtmlGenerator
     Code.new(@highlighter).mark_codes(card_block)
 
     return build_ol(card_block) if tag_helper.ol?
+
     build_ul(card_block) if tag_helper.ul?
   end
 

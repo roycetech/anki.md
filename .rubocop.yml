@@ -1,19 +1,17 @@
 AllCops:
   TargetRubyVersion: 2.4
 
-  # RunRailsCops: true
-
-Rails:
-  Enabled: false
+# Rails:
+#   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/IndentationConsistency:
-  AllowProtectedAndPrivateMethodsBeIndented: true
+# Layout/IndentationConsistency:
+#   AllowProtectedAndPrivateMethodsBeIndented: true
 
-Rails/RelativeDateConstant:
-  Enabled: false
+# Rails/RelativeDateConstant:
+#   Enabled: false
 
 Metrics/ModuleLength:
   Exclude:

@@ -1,4 +1,3 @@
-#
 class TagCounter
   attr_reader :tags_count
 

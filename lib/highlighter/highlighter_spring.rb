@@ -1,8 +1,8 @@
 require './lib/highlighter/highlighter_java'
 
-#
 class SpringHighlighter < JavaHighlighter
-  include RegexpUtils, HtmlUtils
+  include HtmlUtils
+  include RegexpUtils
 
   def initialize
     super(HighlightersEnum::SPRING)
@@ -26,7 +26,7 @@ class SpringHighlighter < JavaHighlighter
       \/?        # optionally followed by forward slash
     )
     >            # match closing angle bracket
-  }x
+  }x.freeze
 
   def regexter_blocks(parser)
     parser.regexter('noattr_xml', RE1, lambda do |_t, _r|

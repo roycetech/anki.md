@@ -1,6 +1,5 @@
 require './lib/highlighter/base_highlighter'
 
-#
 class RubyHighlighter < BaseHighlighter
   include HtmlUtils
 

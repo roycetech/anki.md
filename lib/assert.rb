@@ -1,5 +1,4 @@
 module Assert
-  #
   class AssertionError < StandardError
     def initialize(message: nil)
       @message = message

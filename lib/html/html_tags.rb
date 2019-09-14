@@ -1,7 +1,6 @@
 require 'singleton'
 require './lib/file_reader'
 
-#
 class HtmlTags
   include Singleton
   attr_reader :names

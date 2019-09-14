@@ -5,11 +5,12 @@ require './lib/markdown'
 # appends some needed <br>'s ?
 # Escapes some spaces with &nbsp; ?
 class Code
-  include Assert, Markdown
+  include Markdown
+  include Assert
 
   WELL_START = '<code class="well">'.freeze
-  RE_WELL = %r{^(```|#{WELL_START})([a-zA-Z]*\n)([\d\D]*?)(\1|<\/code>)}
-  RE_CMD_WELL = %r{(?:```|#{WELL_START})\w*\n(\$ .*\n)+(?:```|<\/code>)}
+  RE_WELL = %r{^(```|#{WELL_START})([a-zA-Z]*\n)([\d\D]*?)(\1|<\/code>)}.freeze
+  RE_CMD_WELL = %r{(?:```|#{WELL_START})\w*\n(\$ .*\n)+(?:```|<\/code>)}.freeze
 
   def initialize(highlighter)
     @highlighter = highlighter
@@ -25,6 +26,8 @@ class Code
 
   def regexter_wells(parser)
     parser.regexter('wells', RE_WELL, lambda do |token, regexp|
+      puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+      puts token
       code_block = token[regexp, 3].chomp
 
       @highlighter.mark_known_codes(code_block)

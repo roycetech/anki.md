@@ -1,7 +1,7 @@
 require './lib/html/style_list'
 
 describe StyleList do
-  let(:base) { StyleList.new(%w(keyword quote)) }
+  let(:base) { StyleList.new(%w[keyword quote]) }
 
   context 'add 1 supported' do
     subject do

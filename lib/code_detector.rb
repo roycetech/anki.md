@@ -1,7 +1,6 @@
 require './lib/html/inline'
 require './lib/html/code'
 
-#
 module CodeDetector
   def code?(card_lines)
     inline?(card_lines) || well?(card_lines)

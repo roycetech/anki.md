@@ -2,11 +2,10 @@ require './lib/dsl/indenter'
 require './lib/dsl/html_object'
 require './lib/dsl/html_dsl_extension'
 
-#
 class HTMLDSL
   include Indenter
 
-  LEAF_TAGS = %i(br hr).freeze
+  LEAF_TAGS = %i[br hr].freeze
   LF = "\n".freeze # Used only to alias, not to dry.
 
   def initialize(html_object, &block)

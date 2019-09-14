@@ -1,4 +1,3 @@
-#
 class JsHighlighter < BaseHighlighter
   def initialize
     super(HighlightersEnum::JS)

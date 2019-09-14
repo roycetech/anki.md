@@ -1,7 +1,6 @@
 require './lib/highlighter/highlighter_csharp'
 require './lib/html/html_tags'
 
-#
 class AspHighlighter < CSharpHighlighter
   def initialize
     super(HighlightersEnum::ASP)

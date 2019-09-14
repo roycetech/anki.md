@@ -1,6 +1,5 @@
 require 'set'
 
-#
 module HtmlClassFinder
   # Looks for the format: span class="cls1 cls2"
   def find(string, element)

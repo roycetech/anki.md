@@ -30,7 +30,7 @@ class HTMLDSL
 
   def build_proc(name, args)
     prc = proc { text args.last }
-    class_opt = args[0] && args[0].is_a?(Symbol) && { class: args[0] }
+    class_opt = args[0]&.is_a?(Symbol) && { class: args[0] }
     html_obj = HtmlObject.new(
       name,
       options: class_opt,

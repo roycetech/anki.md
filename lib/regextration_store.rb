@@ -1,11 +1,10 @@
 module RegextrationStore
-  #
   class CommentBuilder
-    RE_COMMENT_HTML = /&lt;!--.*--&gt;/
-    RE_COMMENT_C = %r{\/\/.*|\/\*.*\*\/}
-    RE_COMMENT_PERL = /#.*/
-    RE_COMMENT_NONE = /(?!.*)/
-    RE_COMMENT_SQL = /--.*/
+    RE_COMMENT_HTML = /&lt;!--.*--&gt;/.freeze
+    RE_COMMENT_C = %r{\/\/.*|\/\*.*\*\/}.freeze
+    RE_COMMENT_PERL = /#.*/.freeze
+    RE_COMMENT_NONE = /(?!.*)/.freeze
+    RE_COMMENT_SQL = /--.*/.freeze
 
     def initialize
       @regexp = nil

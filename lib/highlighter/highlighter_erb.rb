@@ -1,6 +1,5 @@
 require './lib/highlighter/base_highlighter'
 
-#
 class ErbHighlighter < BaseHighlighter
   def initialize(param = HighlightersEnum::RUBY)
     super

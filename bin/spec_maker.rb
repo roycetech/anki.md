@@ -1,4 +1,3 @@
-#
 class SpecMaker
   def initialize(file_info)
     @classes_modules_and_methods = file_info[:classes_modules_and_methods]
@@ -43,7 +42,6 @@ class SpecMaker
   end
 end
 
-#
 class SimpleRubyParser
   def initialize(filename, private_methods = false)
     @file = filename
@@ -93,12 +91,14 @@ class SimpleRubyParser
 
   def grab_classes(line)
     return unless line.match?(/^class/)
+
     self.private_found = false
     found_lines << line
   end
 
   def grab_modules(line)
     return unless line.match?(/^module/)
+
     self.private_found = false
     found_lines << line
   end

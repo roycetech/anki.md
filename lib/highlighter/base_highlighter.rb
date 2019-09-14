@@ -52,7 +52,7 @@ class BaseHighlighter
     (?:\/\w+)*    # followed by 0 or more /word
     \/?           # optionally ending with a '/'
     $             # match ending of a string
-  }x
+  }x.freeze
 
   def initialize(type)
     @parser = SourceParser.new
@@ -118,6 +118,7 @@ require './lib/highlighter/highlighter_ruby'
 require './lib/highlighter/highlighter_js'
 require './lib/highlighter/highlighter_cpp'
 require './lib/highlighter/highlighter_java'
+require './lib/highlighter/highlighter_golang'
 require './lib/highlighter/highlighter_swift'
 require './lib/highlighter/highlighter_plsql'
 require './lib/highlighter/highlighter_php'

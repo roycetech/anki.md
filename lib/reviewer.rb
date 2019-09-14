@@ -52,14 +52,17 @@ class Reviewer
       total + translated.count('.')
     end
     return sentence_cnt + 1 unless back_array[0][-1] == '.'
+
     sentence_cnt
   end
 
   def create_tag(sentence_cnt, tag_helper, front_array)
     return unless sentence_cnt > 1 && !tag_helper.enum?
+
     multi_tag = format('Multi:%d', sentence_cnt)
 
     return if tag_helper.include? multi_tag
+
     tag_helper.add_multi(multi_tag)
     count_str = format('(%d)', sentence_cnt)
     @all_multi.push(front_array.join("\n") + count_str) if sentence_cnt > 1

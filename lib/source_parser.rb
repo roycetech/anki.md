@@ -32,6 +32,7 @@ class SourceParser
         partition = map[:partition]
 
         next if partition_missed(partition)
+
         lambda = map[:lambda]
         regexp = map[:regexp]
         procd = lambda.call(partition[1], regexp)

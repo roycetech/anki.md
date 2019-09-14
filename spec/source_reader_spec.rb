@@ -1,6 +1,5 @@
 require './lib/source_reader'
 
-#
 describe SourceReader do
   describe '#each_card' do
     let(:filename) { 'testdummy.md' }
@@ -78,7 +77,7 @@ describe SourceReader do
       let(:back1) { 'back1' }
       let(:front2) { 'front2' }
       let(:back2) { 'back2' }
-      let(:tags) { %i(Concept Abbr) }
+      let(:tags) { %i[Concept Abbr] }
 
       subject(:reader) do
         file = StringIO.new(

@@ -38,7 +38,7 @@ module HtmlUtilDeprecated
                       token
                     })
 
-    @@htmlcustom_words = get_html_keywords unless @@htmlcustom_words
+    @@htmlcustom_words ||= get_html_keywords
     parser.regexter('known tags',
                     Regexp.new("<\\/?(?:#{@@htmlcustom_words.join('|')})>"),
                     lambda { |token, _regexp|
@@ -46,7 +46,7 @@ module HtmlUtilDeprecated
                     })
 
     parser.regexter('left angle',
-                    /(<)(\/?)(\w+)?/,
+                    %r{(<)(/?)(\w+)?},
                     lambda { |token, regexp|
                       "&lt;#{token[regexp, 2]}#{token[regexp, 3]}"
                     })

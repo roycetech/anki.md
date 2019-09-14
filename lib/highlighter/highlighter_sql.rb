@@ -1,4 +1,3 @@
-#
 class SqlHighlighter < BaseHighlighter
   def initialize
     super(HighlightersEnum::SQL)
@@ -24,7 +23,7 @@ class SqlHighlighter < BaseHighlighter
       (?: \sLOCAL)? # Optionally followed by text ' LOCAL'
       \sTIME\sZONE  # match the text ' TIME ZONE'
     )?
-  /x
+  /x.freeze
 
   RE2 = /
     INTERVAL        # match the text 'INTERVAL'
@@ -35,7 +34,7 @@ class SqlHighlighter < BaseHighlighter
     (?:YEAR|MONTH)  # math the text 'YEAR' or 'MONTH'
     (?:\(\d\))?     # Optionally a single digit between parenthesis
     (?:\sTO MONTH)? # Optionally match text ' TO MONTH'
-  /x
+  /x.freeze
 
   RE3 = /
     INTERVAL
@@ -49,7 +48,7 @@ class SqlHighlighter < BaseHighlighter
       (?:HOUR|MINUTE|SECOND)
       (?:\(\d+\))?
     )?
-  /x
+  /x.freeze
 
   def regexter_blocks(parser)
     wrappexter(parser, 'optional param', /\[.*\]/, :opt)

@@ -22,6 +22,7 @@ module Markdown
     }
 
     return hash[key] if key
+
     hash
   end
 

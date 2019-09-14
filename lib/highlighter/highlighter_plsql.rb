@@ -1,4 +1,3 @@
-#
 class PlsqlHighlighter < BaseHighlighter
   COLOR_CLASS_VAR = '#426F9C'.freeze
 

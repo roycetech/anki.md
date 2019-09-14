@@ -12,7 +12,6 @@ require './bin/upload' unless $unit_test
 
 require 'CSV'
 
-#
 class CollectImportantApi
   LOGGER = MyLogger.instance.freeze
 
@@ -50,6 +49,7 @@ class CollectImportantApi
           tags.push(common_tag) if common_tag
           unticked = front[0].delete('`') unless front[0].nil?
           next unless front_included(unticked) || tags.any? && !(@list & tags).empty?
+
           write_card(main_list, front, back, tags)
 
           output = ''
@@ -75,16 +75,7 @@ class CollectImportantApi
   def generate_output_filename
     today = Time.now
 
-    @@outputFilename = '%s/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv' %
-                       [
-                         File.expand_path('~'),
-                         @deckname,
-                         today.year % 1000,
-                         '%02d' % today.month,
-                         '%02d' % today.day,
-                         '%02d' % today.hour,
-                         '%02d' % today.min
-                       ]
+    @@outputFilename = format('%s/Desktop/Anki Generated Sources/%s %s%s%s_%s%s.tsv', File.expand_path('~'), @deckname, today.year % 1000, '%02d' % today.month, '%02d' % today.day, '%02d' % today.hour, '%02d' % today.min)
   end
 
   def front_included(front_card)

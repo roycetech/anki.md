@@ -1,4 +1,3 @@
-#
 class SystemTagCounter
   # Will use the system tag "Concept(2) if there are a total of 2 Concept tags
   # in the deck."

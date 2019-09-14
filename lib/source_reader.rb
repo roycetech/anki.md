@@ -14,6 +14,7 @@ class SourceReader
       state.next_line
       state.start_card(!@card_helper.blank_or_comment?(line))
       next unless state.card_began?
+
       state.inc_space_on_empty(line)
       @card_helper.handle(state, line, &block)
     end

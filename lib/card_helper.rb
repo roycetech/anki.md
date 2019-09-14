@@ -16,6 +16,7 @@ class CardHelper
 
   def blank_or_comment?(line)
     return true if line[/^#/] || line.strip.empty?
+
     false
   end
 
@@ -33,6 +34,7 @@ class CardHelper
 
   def handle_back(state, line)
     return if line.empty? && state.backless?
+
     state.add_back(line)
     state.reset_space unless line.empty?
   end

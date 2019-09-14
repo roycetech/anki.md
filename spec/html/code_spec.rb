@@ -9,7 +9,7 @@ describe Code do
     context 'no codes' do
       let(:input) { 'one' }
       it 'does not change the input' do
-        expect { subject.mark_codes(input) }.not_to change { input }
+        expect({ subject.mark_codes(input) }).not_to change { input }
       end
     end
 
@@ -79,5 +79,5 @@ describe Code do
           )
       end
     end
-  end # method
-end # class
+  end  # method
+end  # class

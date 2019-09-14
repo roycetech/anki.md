@@ -2,11 +2,11 @@ require './lib/source_reader'
 require './lib/latest_file_finder'
 require './lib/tag_helper'
 
-RE_TOKENS = %r{([a-z\?!]+)|\$\/|[+-]?\d}
-EXCLUDE_FRONT = %w(or).freeze
-EXCLUDE_BACK = %w(Ruby e.g).freeze
-BODY_TAGS = %w(true catch false nil yield to_int to_s eval to_i padstr regexp\
-               each_char obj at_exit callcc).freeze
+RE_TOKENS = %r{([a-z\?!]+)|\$\/|[+-]?\d}.freeze
+EXCLUDE_FRONT = %w[or].freeze
+EXCLUDE_BACK = %w[Ruby e.g].freeze
+BODY_TAGS = %w[true catch false nil yield to_int to_s eval to_i padstr regexp\
+               each_char obj at_exit callcc].freeze
 
 # RE_WORDS = Regexp.quote(BODY_TAGS.join('|') + '|')
 RE_WORDS = BODY_TAGS.join('|')
@@ -46,15 +46,12 @@ R = ['%x{...}', # Command
      '\\\\r\\\\n', #
      '\\\\[rn]\b'].freeze
 
-#
-
 puts R.join('|')
 RE_TAG = Regexp.new(R.join('|'))
-RE_TAG2 = /\(?[\w\$]+(\.\w+(?:\(\w*\))?)+||/
+RE_TAG2 = /\(?[\w\$]+(\.\w+(?:\(\w*\))?)+||/.freeze
 
 WRITE_FLAG = true
 
-#
 class TagApiSource
   def execute(filename)
     File.open(filename, 'r') do |file_source|
@@ -67,7 +64,7 @@ class TagApiSource
           file_output << "\n" if WRITE_FLAG
 
           # bs for skip back, fs for front skip
-          if tags.include?'bs'
+          if tags.include? 'bs'
             if WRITE_FLAG
               back.each do |element|
                 file_output << element.to_s

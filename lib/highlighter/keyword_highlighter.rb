@@ -1,13 +1,14 @@
 require './lib/utils/html_utils'
 require './lib/wrappexter'
 
-#
 class KeywordHighlighter
-  include HtmlUtils, Wrappexter
+  include Wrappexter
+  include HtmlUtils
 
   # argument must be truthy and has contents.
   def initialize(keywords_filename)
     raise 'Keywords required' unless keywords_filename
+
     @keywords = get_keywords(keywords_filename)
     raise 'Keywords required' if @keywords.empty?
   end

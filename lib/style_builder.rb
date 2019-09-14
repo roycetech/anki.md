@@ -1,4 +1,3 @@
-#
 class StyleBuilder
   # Colorizer is an object that determines the actual color to use
   def initialize(html_builder = nil, colorizer = nil)
@@ -44,6 +43,7 @@ class StyleBuilder
   def style_e
     err_msg = 'End style must originate from html builder only. '
     raise err_msg if @html_builder.nil?
+
     @html_builder.merge(self)
     @html_builder
   end

@@ -1,14 +1,13 @@
-#
 class Inline
   # RE_PATTERN = /(`)((?:\\\1|[^\1])*?)(\1)/
 
   # Supports escaped: `\``, same line only
-  RE_PATTERN = /`(?:\\`|[^`\n])+`/
+  RE_PATTERN = /`(?:\\`|[^`\n])+`/.freeze
   RE_HTML_PATTERN = %r{
     <code\sclass="inline"> # match the html tag <code class="inline">
       .*?                 # match everything inside non-greedily.
     <\/code>              # match the ending </code>
-  }x
+  }x.freeze
 
   def initialize(highlighter)
     @highlighter = highlighter

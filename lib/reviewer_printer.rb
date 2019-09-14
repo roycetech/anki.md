@@ -1,4 +1,3 @@
-#
 class ReviewerPrinter
   def initialize(reviewer)
     @reviewer = reviewer

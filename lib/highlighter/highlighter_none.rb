@@ -1,4 +1,3 @@
-#
 class NoneHighlighter < BaseHighlighter
   # Suppress base class initialization, do not remove empty initializer
   def initialize

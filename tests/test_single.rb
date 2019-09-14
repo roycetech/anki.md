@@ -6,7 +6,7 @@ BEGIN { $unit_test = true }
 # Exclude the Style from Testing.
 # &nbsp's are converted back to spaces just for test simplicity.
 class TestSingle < Test::Unit::TestCase
-  RE_OUTER_DIV = /<div class="main">[\d\D]*<\/div>/ # outer most div, won't validate mispaired divs.
+  RE_OUTER_DIV = %r{<div class="main">[\d\D]*</div>}.freeze # outer most div, won't validate mispaired divs.
 
   # TEST 14 - Code Front with tag newline bug
   def test_code_front_with_tag_bug

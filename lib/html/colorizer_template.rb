@@ -1,22 +1,16 @@
-
 # Few choices so we use template method.
 class ColorizerTemplate
   def convert(selector, style_name, style_value)
     key = "#{selector}{#{style_name}"
 
     converted = mapping[key]
-    if converted
-      converted
-    else
-      style_value
-    end
+    converted || style_value
   end
 
   # @Abstract
   # def get_mapping() end
 end
 
-#
 class DarkColorizer < ColorizerTemplate
   def initialize
     @mapping = {
@@ -34,7 +28,6 @@ class DarkColorizer < ColorizerTemplate
   attr_reader :mapping
 end
 
-#
 class VisualStudioColorizer < ColorizerTemplate
   def initialize
     @mapping = {
@@ -51,7 +44,6 @@ class VisualStudioColorizer < ColorizerTemplate
   attr_reader :mapping
 end
 
-#
 class LightColorizer < ColorizerTemplate
   def initialize
     @mapping = {}

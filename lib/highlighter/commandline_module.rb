@@ -1,6 +1,5 @@
 require './lib/source_parser'
 
-#
 module CommandlineModule
   def regexter(parser)
     parser.regexter(

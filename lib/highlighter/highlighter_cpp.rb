@@ -1,4 +1,3 @@
-#
 class CppHighlighter < BaseHighlighter
   def keywords_file
     'keywords_cpp.txt'

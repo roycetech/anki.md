@@ -1,6 +1,5 @@
 require './lib/highlighter/base_highlighter'
 
-#
 class PythonHighlighter < BaseHighlighter
   def initialize
     super(HighlightersEnum::PYTHON)

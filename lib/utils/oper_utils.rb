@@ -1,4 +1,3 @@
-#
 module OperUtils
   # unit tested.
   def xor(expr1, expr2)

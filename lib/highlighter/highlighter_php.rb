@@ -1,6 +1,5 @@
 require './lib/highlighter/base_highlighter'
 
-#
 class PhpHighlighter < BaseHighlighter
   include RegexpUtils
 

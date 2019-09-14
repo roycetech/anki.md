@@ -1,6 +1,6 @@
 require './bin/main_class'
 
-PATH = ENV['ANKI_FOLDER'].freeze
+PATH = ENV['ANKI_FOLDER']
 
 unless PATH
   LOGGER.fatal 'Environment "ANKI_FOLDER" needs to be set'
@@ -8,7 +8,7 @@ unless PATH
 end
 
 unless UNIT_TEST
-  if ARGV.empty? || 'upload' == ARGV[0]
+  if ARGV.empty? || ARGV[0] == 'upload'
     # - Generate a single file
     main = MainClass.new(source_file: LatestFileFinder.new(PATH, '*.md').find)
     main.execute

@@ -1,13 +1,12 @@
 require 'singleton'
 require 'logger'
 
-#
 class MyLogger
   include Singleton
 
   RAKE = 3
   SUBLIMETEXT = 4 # 2 & 3
-  METHODS = %i(info debug warn level debug? fatal).freeze
+  METHODS = %i[info debug warn level debug? fatal].freeze
 
   def initialize
     @logger = Logger.new(STDOUT)

@@ -1,14 +1,13 @@
 require './lib/file_reader'
 require './lib/utils/html_utils'
 
-#
 class CommandHighlighter < BaseHighlighter
   include HtmlUtils
 
   @@html_tags = nil
 
   def initialize
-    @@html_tags = FileReader.read_as_list('html_element_names.txt') unless @@html_tags
+    @@html_tags ||= FileReader.read_as_list('html_element_names.txt')
     super
   end
 
@@ -17,7 +16,7 @@ class CommandHighlighter < BaseHighlighter
   end
 
   def regexter_blocks(parser)
-    pattern = /&lt;\/?(?:#{@@html_tags.join('|')}).*&gt;/
+    pattern = %r{&lt;/?(?:#{@@html_tags.join('|')}).*&gt;}
     parser.regexter(
       'html',
       pattern,

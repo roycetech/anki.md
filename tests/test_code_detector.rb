@@ -1,4 +1,4 @@
-require'./bin/main_class.rb'
+require './bin/main_class.rb'
 require 'test/unit'
 
 BEGIN { $unit_test = true }

@@ -1,6 +1,5 @@
 require './lib/dsl/style_dsl'
 
-#
 class StyleList
   def initialize(tags, element_name = 'span')
     @element_name = element_name
