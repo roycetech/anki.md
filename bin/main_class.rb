@@ -4,10 +4,11 @@ require './bin/main_requires'
 
 LOGGER ||= MyLogger.instance.freeze
 
+# RTFC
 class MainClass
   # Configuration
   Home_Path = File.expand_path('~')
-  TSV_Output_Folder = "#{Home_Path}/Desktop/Anki Generated Sources".freeze
+  TSV_OUTPUT_FOLDER = "#{Home_Path}/Desktop/Anki Generated Sources".freeze
 
   # exposed for testability
   attr_reader :source_absolute_path, :html_generator
@@ -18,7 +19,7 @@ class MainClass
     @source_absolute_path = source_file
     LOGGER.info "File Path: #{@source_absolute_path}"
 
-    Dir.mkdir TSV_Output_Folder unless File.exist? TSV_Output_Folder
+    Dir.mkdir TSV_OUTPUT_FOLDER unless File.exist? TSV_OUTPUT_FOLDER
   end
 
   def generate_output_filepath

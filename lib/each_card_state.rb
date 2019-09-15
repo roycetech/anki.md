@@ -69,7 +69,7 @@ class EachCardState
   end
 
   def remove_back_last_blank
-    @back.pop if @back.last&.empty?
+    @back.pop if @back.last.empty?
   end
 
   def start_card(condition)

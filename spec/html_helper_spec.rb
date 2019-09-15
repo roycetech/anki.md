@@ -18,7 +18,7 @@ describe HtmlGenerator do
         expect { HtmlGenerator.new(nil) }.to raise_error(AssertionError)
       end
     end
-  end # initialize()
+  end
 
   describe '#build_tags' do
     subject { HtmlGenerator.new(NoneHighlighter.new) }
@@ -33,7 +33,7 @@ describe HtmlGenerator do
         ].join("\n").strip)
       end
     end
-  end # build_tags()
+  end
 
   describe '#format_front' do
     subject { HtmlGenerator.new(NoneHighlighter.new) }
@@ -53,5 +53,5 @@ describe HtmlGenerator do
         ].join("\n").strip)
       end
     end
-  end # build_tags()
-end # class
+  end
+end

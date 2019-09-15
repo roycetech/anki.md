@@ -40,5 +40,5 @@ describe TagCounter do
         expect(tag_counter.tags_count).to eq(Concept: 2)
       end
     end
-  end # Context: 'given two "Concept" tagged cards'
-end # class
+  end
+end

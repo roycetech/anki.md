@@ -56,4 +56,4 @@ class CardHelper
     raise "ERROR: Misspelled #{filemsg}@Line #{line_number}:#{line}" if
       line[/@tags/i] && !line[/@Tags: .*/]
   end
-end # class
+end

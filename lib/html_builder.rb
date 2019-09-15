@@ -113,7 +113,7 @@ class HtmlBuilder
 
       last_tag = tag unless SPECIAL_TAGS.include?(tag)
       last_lfed = %w[lf br].include?(tag)
-    end # each loop
+    end
 
     return_value
   end

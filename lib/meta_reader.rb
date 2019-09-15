@@ -14,9 +14,7 @@ class MetaReader
     return_value
   end
 
-  private_class_method
-
-  def self.extract(line)
+  private_class_method def self.extract(line)
     key = line[/(?:@)(\w*)/, 1].downcase.to_sym
     value = line[/(?:=)(.*)/, 1]
     [key, value]

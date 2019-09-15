@@ -11,7 +11,6 @@ require './lib/html/style_list'
 require './lib/highlighter/highlighters_enum'
 require './lib/theme_store'
 
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ClassLength
 # Do bunch of apply, then invoke end_apply to close the style tag
 class StyleGenerator
@@ -147,6 +146,7 @@ class StyleGenerator
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def build_code(tags)
     style_list = StyleList.new(tags)
     style_list.add('keyword', :color, '#7E0854')
@@ -172,7 +172,9 @@ class StyleGenerator
 
     style_list.each { |style| yield style }
   end
+  # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength
 
 # # tag_helper = TagHelper.new(tags: [])
 # # tag_helper = TagHelper.new(tags: [:Concept])

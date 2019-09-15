@@ -1,6 +1,7 @@
 require './lib/html/inline'
 require './lib/html/code'
 
+# Detects code in the card
 module CodeDetector
   def code?(card_lines)
     inline?(card_lines) || well?(card_lines)
@@ -21,8 +22,9 @@ module CodeDetector
     to_block_code(array_or_codeblock).match?(Code::RE_WELL) ? true : false
   end
 
-  def command?(code_block)
-    code_block.match?(Code::RE_CMD_WELL) ? true : false
+  def command?(array_or_codeblock)
+    source = to_block_code(array_or_codeblock)
+    source.match?(Code::RE_CMD_WELL) ? true : false
   end
 
   private

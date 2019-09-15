@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 # :nocov:
 require './lib/latest_file_finder'
 require 'selenium-webdriver'
 require './lib/mylogger'
 
+# This is broken atm
 class RunSelenium
-  BASE_URL = 'https://api.ankiapp.com/'.freeze
+  BASE_URL = 'https://api.ankiapp.com/'
   LOGGER = MyLogger.instance
 
   def self.execute

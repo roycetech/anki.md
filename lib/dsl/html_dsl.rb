@@ -30,7 +30,7 @@ class HTMLDSL
   end
 
   def respond_to_missing?(name, _include_all)
-    name.match? /\w+/
+    name.match?(/\w+/)
   end
 
   def method_missing(name, *args, &block)

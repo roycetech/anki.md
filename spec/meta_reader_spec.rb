@@ -21,5 +21,5 @@ describe MetaReader do
         MetaReader.read(mfile)
       end
     end
-  end # method
-end # class
+  end
+end

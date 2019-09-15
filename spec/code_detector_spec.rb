@@ -87,7 +87,7 @@ describe CodeDetector do
       describe '.command?' do
         it('returns false') { expect(subject.command?(input)).to be false }
       end
-    end  # context: inline only
+    end
 
     context 'well only' do
       let(:input) { ['```lang', 'pass', '```'] }
@@ -109,7 +109,7 @@ describe CodeDetector do
       describe '.command?' do
         it('returns false') { expect(subject.command?(input)).to be false }
       end
-    end  # context: well only
+    end
   end
 
   context 'command' do
@@ -119,4 +119,4 @@ describe CodeDetector do
       it('returns true') { expect(subject.command?(input)).to be true }
     end
   end
-end # class
+end

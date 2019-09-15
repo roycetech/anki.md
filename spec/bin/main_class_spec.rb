@@ -64,7 +64,7 @@ describe MainClass do
 
       subject.execute
     end
-  end # execute()
+  end
 
   describe '#init_html_generator' do
     context 'language defined' do
@@ -85,7 +85,7 @@ describe MainClass do
         end
         subject.init_html_generator(nil)
       end
-    end  # context: 'language defined'
+    end
 
     context 'language not defined' do
       it 'initializes the html_generator' do
@@ -102,14 +102,14 @@ describe MainClass do
         end
         subject.init_html_generator(nil)
       end
-    end  # context: 'language defined'
-  end  # init_html_generator()
+    end
+  end
 
   describe '#generate_output_filepath' do
     it 'generates filename based on source and date' do
-      allow(Time).to receive(:now) { Time.current(2000, 2, 3, 4, 5) }
+      allow(Time).to receive(:now) { Time.new(2000, 2, 3, 4, 5) }
       expect(subject.generate_output_filepath)
         .to match(%r{.*\/dummy 2000Feb03_0405.tsv})
     end
-  end  # init_output_filename()
-end # MainClass
+  end
+end

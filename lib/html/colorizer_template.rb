@@ -11,6 +11,7 @@ class ColorizerTemplate
   # def get_mapping() end
 end
 
+# Theme for Dark
 class DarkColorizer < ColorizerTemplate
   def initialize
     @mapping = {
@@ -28,6 +29,7 @@ class DarkColorizer < ColorizerTemplate
   attr_reader :mapping
 end
 
+# Theme for VSC
 class VisualStudioColorizer < ColorizerTemplate
   def initialize
     @mapping = {
@@ -44,6 +46,7 @@ class VisualStudioColorizer < ColorizerTemplate
   attr_reader :mapping
 end
 
+# Light theme
 class LightColorizer < ColorizerTemplate
   def initialize
     @mapping = {}

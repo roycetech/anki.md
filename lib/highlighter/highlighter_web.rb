@@ -14,7 +14,7 @@ class WebHighlighter < JsHighlighter
   end
 
   def regexter_blocks(parser)
-    pattern = Regexp.new("&lt;\\/?(?:#{@@html_tags.join('|')}).*&gt;")
+    pattern = Regexp.new("&lt;\\/?(?:#{@html_tags.join('|')}).*&gt;")
     parser.regexter('html', pattern, lambda do |token, _re_name|
       parser_inner = SourceParser.new
 

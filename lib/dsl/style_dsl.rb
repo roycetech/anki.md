@@ -27,7 +27,7 @@ class StyleDSL
     str += '</style>'
   end
   # :nocov:
-end # class
+end
 
 # DSL Entry
 def style(theme = ThemeStore::Default, &block)

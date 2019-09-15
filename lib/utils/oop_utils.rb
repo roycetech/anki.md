@@ -1,3 +1,4 @@
+# Provides Oop features to ruby
 module OopUtils
   def abstract
     calling_method = caller[0][/`.*'/][1..-2]

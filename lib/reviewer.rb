@@ -59,12 +59,12 @@ class Reviewer
   def create_tag(sentence_cnt, tag_helper, front_array)
     return unless sentence_cnt > 1 && !tag_helper.enum?
 
-    multi_tag = format('Multi:%d', sentence_cnt)
+    multi_tag = format('Multi:%<count>d', count: sentence_cnt)
 
     return if tag_helper.include? multi_tag
 
     tag_helper.add_multi(multi_tag)
-    count_str = format('(%d)', sentence_cnt)
+    count_str = format('(%<count>d)', count: sentence_cnt)
     @all_multi.push(front_array.join("\n") + count_str) if sentence_cnt > 1
   end
 

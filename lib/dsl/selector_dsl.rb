@@ -63,7 +63,7 @@ class SelectorDSL
       str += '  }'
     end
   end
-end # class
+end
 
 # DSL Entry
 def select(selector, name = nil, value = nil, &block)
