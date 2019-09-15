@@ -15,6 +15,7 @@ require './lib/html/colorizer_template'
 require './lib/code_detector'
 require './lib/cmd_detector'
 
+# rtfc
 class HtmlGenerator
   include Markdown
   include HtmlUtils
@@ -131,4 +132,4 @@ class HtmlGenerator
       merge(card_block)
     end
   end
-end # class
+end

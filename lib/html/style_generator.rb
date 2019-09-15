@@ -33,11 +33,17 @@ class StyleGenerator
     # $logger.debug(@colorizer)
 
     @lang = lang
+    @size = 16
   end
 
   def style_front(front_card_block)
+    @size = 64 if front_card_block.size < 5
+    puts(@size)
     front_style = style {}
-    front_style.styles << build_main
+    big_size = front_card_block.size < 5
+    font_size = big_size ? 64 : 16
+    alignment = big_size ? 'center' : 'left'
+    front_style.styles << build_main(font_size, alignment)
 
     no_tag = @tag_helper.untagged? || @tag_helper.back_only?
     front_style.styles << build_tag unless no_tag
@@ -52,7 +58,12 @@ class StyleGenerator
 
   def style_back(back_card_block)
     back_style = style(get_theme) {}
-    back_style.styles << build_main
+    big_size = back_card_block.size < 5
+    font_size = big_size ? 64 : 16
+    alignment = big_size ? 'center' : 'left'
+    back_style.styles << build_main(font_size, alignment)
+
+    # back_style.styles << build_main
 
     no_tag = @tag_helper.untagged? || @tag_helper.front_only?
     back_style.styles << build_tag unless no_tag
@@ -76,10 +87,10 @@ class StyleGenerator
     end
   end
 
-  def build_main
+  def build_main(size = 16, alignment = 'left')
     select 'div.main' do
-      font_size '16pt'
-      text_align 'left'
+      font_size "#{size}pt"
+      text_align alignment
     end
   end
 

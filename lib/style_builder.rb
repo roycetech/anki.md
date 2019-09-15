@@ -1,3 +1,4 @@
+# rtfc
 class StyleBuilder
   # Colorizer is an object that determines the actual color to use
   def initialize(html_builder = nil, colorizer = nil)

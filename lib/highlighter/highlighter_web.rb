@@ -5,7 +5,7 @@ class WebHighlighter < JsHighlighter
   @html_tags = nil # if you are wondering, yes this is required.
 
   def initialize
-    @html_tags ||= FileReader.read_as_list('html_element_names.txt')
+    @html_tags = FileReader.read_as_list('html_element_names.txt')
     super
   end
 
