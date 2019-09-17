@@ -67,6 +67,6 @@ rspec --format documentation
 rspec spec/utils/html_utils_spec.rb
 ```
 
-**Note**: Logging needs to be set to `WARN` for it to be logged.
+**Note**: Logging needs to be set to `WARN` for it to be logged?
 
 Coverage at: `coverage/index.html#_AllFiles`
