@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 group :test do
   gem 'activesupport', require: false
+  gem 'dotenv'
   gem 'guard-rspec', require: false
   gem 'pry'
   gem 'pry-nav'

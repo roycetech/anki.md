@@ -15,22 +15,15 @@ This project converts a custom markdown file to a `.tsv` file that is recognized
 
 ## Setup
 
-Set environment variables for:
+Set environment variables in .env
 
-- `ANKI_FOLDER` should point to where the cards sources are.
+### Ruby version
 
-And optionally when uploading to nexus:
-
-- `ANKI_USERNAME`
-- `ANKI_PASSWORD`
-
-Use Ruby version 2.4 as 2.3 seems to throw an exception around `match` method
- improperly used.
+Use at least 2.4 as 2.3 throws an exception around `match` method being improperly used.
 
 ## Running
 
-Go to the folder /bin and each file there are scripts that can be run individually.
-
+See Rakefile for complete list of commands.
 
 
 ### Notable Codes

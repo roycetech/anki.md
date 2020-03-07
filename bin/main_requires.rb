@@ -6,6 +6,7 @@ end
 require './lib/class_extensions'
 require 'pry'
 require 'pry-nav'
+require 'dotenv/load'
 
 # The requires below need to be reviewed...
 

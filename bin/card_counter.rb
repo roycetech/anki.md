@@ -8,7 +8,7 @@ LOGGER = MyLogger.instance
 SOURCE_FOLDER = ENV['ANKI_FOLDER']
 LOGGER.debug("Source Folder: #{SOURCE_FOLDER}")
 unless SOURCE_FOLDER
-  puts 'Environment variable for SOURCE_FOLDER is not set'
+  LOGGER.warn 'Environment variable for SOURCE_FOLDER is not set'
   exit
 end
 
@@ -33,12 +33,12 @@ Dir[File.join(PATH, FILE_MASK)].sort.each do |filename|
       card_count += 1
     end
     total_api += card_count if filename.include?('-API-')
-    puts "#{filename}: #{card_count}"
+    LOGGER.info "#{filename}: #{card_count}"
     total_cards += card_count
   end
 end
 
-puts "Total files: #{total_files}"
-puts "Total cards: #{total_cards}"
-puts "Total API cards: #{total_api}"
-puts "Total non-API cards: #{total_cards - total_api}"
+LOGGER.info "Total files: #{total_files}"
+LOGGER.info "Total cards: #{total_cards}"
+LOGGER.info "Total API cards: #{total_api}"
+LOGGER.info "Total non-API cards: #{total_cards - total_api}"

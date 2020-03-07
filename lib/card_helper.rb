@@ -15,7 +15,7 @@ class CardHelper
   end
 
   def blank_or_comment?(line)
-    return true if line[/^#/] || line.strip.empty?
+    return true if line[/^#/] && !line[/^##### @Tags/] || line.strip.empty?
 
     false
   end
@@ -41,7 +41,7 @@ class CardHelper
 
   def register_front(state, line)
     validate_tag_declaration(line, line_number: state.line_number)
-    if line[/@Tags: .*/]
+    if line[/(?:##### )?@Tags: .*/]
       state.tags = TagHelper.parse(line)
     elsif state.tags.include? :Abbr
       state.add_front(line + ' abbreviation')

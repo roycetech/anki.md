@@ -10,7 +10,7 @@ end
 task default: [:run]
 
 task :run do
-  ruby './bin/main_script.rb'
+  ruby './main_script.rb'
 end
 
 # To run: 'rake rspec[./lib/myruby.rb]'
@@ -20,7 +20,7 @@ task :rspec, [:filename] do |_t, args|
 end
 
 task :runpload do
-  ruby './bin/main_script.rb upload'
+  ruby './main_script.rb upload'
 end
 
 task :multi, [:wildcard] do |_t, args|

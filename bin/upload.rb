@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # frozen_string_literal: true
 
 # :nocov:
@@ -13,7 +15,7 @@ class RunSelenium
   def self.execute
     LOGGER.info 'RunSelenium started...'
 
-    driver = Selenium::WebDriver.for :firefox
+    driver = Selenium::WebDriver.for :chrome
     @accept_next_alert = true
     # driver.manage.timeouts.implicit_wait = 30
     @verification_errors = []

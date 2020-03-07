@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require './bin/main_class'
+require 'dotenv/load'
 
 PATH = ENV['ANKI_FOLDER']
 
