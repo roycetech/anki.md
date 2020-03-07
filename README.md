@@ -9,7 +9,7 @@ This project converts a custom markdown file to a `.tsv` file that is recognized
  the cards.
 - _Display Tag_ - it is hard coded into the card html to quick visibility.  It
  adds important, relative information to the card content.
-- File _base name_ - it is the simple filename without the extension.  e.g.
+- File _base name_ - it is the simple filename without the last extension.  e.g.
  `file.txt.bak` => `file.txt`
 - _card block_ - it is the line(s) of text that will appear on one side of a card.
 
@@ -26,6 +26,12 @@ And optionally when uploading to nexus:
 
 Use Ruby version 2.4 as 2.3 seems to throw an exception around `match` method
  improperly used.
+
+## Running
+
+Go to the folder /bin and each file there are scripts that can be run individually.
+
+
 
 ### Notable Codes
 
@@ -58,7 +64,7 @@ File uploading is broken at the moment to the point where the final button is
 ### How to run all Tests with coverage
 
 ```bash
-rspec --format documentation
+rspec -fd
 ```
 
 ### Test a single file

@@ -99,4 +99,4 @@ class MainClass
     tsv_compat_lst << SystemTagCounter.new.count(tag_helper, map: count_map)
     tsv_compat_lst
   end
-end # End of MainClass
+end

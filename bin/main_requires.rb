@@ -1,7 +1,11 @@
-require 'simplecov'
-SimpleCov.start
+if defined?(UNIT_TEST)
+  require 'simplecov'
+  SimpleCov.start
+end
 
 require './lib/class_extensions'
+require 'pry'
+require 'pry-nav'
 
 # The requires below need to be reviewed...
 

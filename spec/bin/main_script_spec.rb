@@ -1,5 +1,5 @@
 require './bin/upload'
-require './bin/main_script'
+require './main_script'
 
 describe 'main_script' do
   context 'unit testing' do

@@ -1,7 +1,7 @@
 require './bin/main_class.rb'
 require 'test/unit'
 
-BEGIN { $unit_test = true }
+$unit_test = true
 
 # Exclude the Style from Testing.
 # &nbsp's are converted back to spaces just for test simplicity.

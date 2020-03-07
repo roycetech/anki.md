@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require './bin/main_class'
 
 PATH = ENV['ANKI_FOLDER']
