@@ -8,7 +8,7 @@ group :test do
   gem 'pry-nav'
   gem 'rspec'
   gem 'rspec-its'
-  gem 'rubyzip', '1.2.1'
+  gem 'rubyzip', '1.3.0'
   gem 'selenium-webdriver', '2.53.0'
   gem 'simplecov', require: false
 end
