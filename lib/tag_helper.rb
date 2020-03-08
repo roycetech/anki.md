@@ -38,7 +38,9 @@ class TagHelper
   end
 
   def index_enum(back_card)
-    return unless enum?
+    # binding.pry
+
+    return unless enum? || enum_detected?(back_card)
 
     type = ol? ? 'O' : 'U'
     multi_tag = "Enum#{type}:#{back_card.size}".to_sym
@@ -95,5 +97,33 @@ class TagHelper
 
   def enum?
     ul? || ol?
+  end
+
+  def enum_detected?(back_card)
+    if back_card.is_a?(Array) && back_card.any?
+      return true if ordered_enum?(back_card)
+
+      back_card.each do |element|
+        return false unless element[/^[-+*]\s.*/]
+      end
+
+      return false unless enum_same_prefix?(back_card)
+
+      return true
+    end
+    false
+  end
+
+  def ordered_enum?(back_card)
+    back_card.each_with_index do |item, index|
+      return false unless item.start_with?("#{index + 1}. ")
+    end
+    true
+  end
+
+  def enum_same_prefix?(back_card)
+    prefix = back_card.first[0, 2]
+    back_card_rest = back_card - [back_card.first]
+    back_card_rest.all? { |list_item| list_item.start_with?(prefix) }
   end
 end

@@ -90,7 +90,7 @@ describe TagHelper do
         subject { TagHelper.new(tag_line: '@Tags: Figure ☖') }
         its(:figure?) { should be true }
       end
-    end  # context non-list
+    end
 
     context 'list' do
       context 'unordered' do
@@ -114,8 +114,32 @@ describe TagHelper do
         its(:back_only) { should be false }
         its(:front_only) { should be true }
       end
-    end  # end context-list
-  end  # method
+    end
+  end
+
+  describe '#enum_detected?' do
+    subject { TagHelper.new(tags: [:Concept]) }
+
+    it 'should detect - prefixed array elements' do
+      expect(subject.enum_detected?(['- 1', '- 2'])).to eq(true)
+    end
+
+    it 'should detect + prefixed array elements' do
+      expect(subject.enum_detected?(['+ 1', '+ 2'])).to eq(true)
+    end
+
+    it 'should detect * prefixed array elements' do
+      expect(subject.enum_detected?(['* 1', '* 2'])).to eq(true)
+    end
+
+    it 'should reject mixed prefixed array elements' do
+      expect(subject.enum_detected?(['* 1', '- 2'])).to eq(false)
+    end
+
+    it 'should detect numbered array elements' do
+      expect(subject.enum_detected?(['1. One', '2. Two'])).to eq(true)
+    end
+  end
 
   describe '#add' do
     subject { TagHelper.new(tags: [:Concept]) }
@@ -123,7 +147,7 @@ describe TagHelper do
       expect { subject.add(:FB) }.to \
         change { subject.include?(:FB) }.from(false).to(true)
     end
-  end  # #add method
+  end
 
   describe '#index_enum' do
     subject { TagHelper.new(tags: [:EnumU]) }
@@ -140,5 +164,5 @@ describe TagHelper do
           change { subject.include?(:'EnumU:2') }.from(false).to(true)
       end
     end
-  end  # #add method
-end # class
+  end
+end
