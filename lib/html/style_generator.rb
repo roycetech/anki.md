@@ -43,7 +43,7 @@ class StyleGenerator
     big_size = front_card_block.size < 5
     font_size = big_size ? 64 : 16
     alignment = big_size ? 'center' : 'left'
-    front_style.styles << build_main(font_size, alignment)
+    front_style.styles << build_mainf(font_size, alignment)
 
     no_tag = @tag_helper.untagged? || @tag_helper.back_only?
     front_style.styles << build_tag unless no_tag
@@ -61,7 +61,7 @@ class StyleGenerator
     big_size = back_card_block.size < 5
     font_size = big_size ? 64 : 16
     alignment = big_size ? 'center' : 'left'
-    back_style.styles << build_main(font_size, alignment)
+    back_style.styles << build_mainb(font_size, alignment)
 
     # back_style.styles << build_main
 
@@ -89,6 +89,20 @@ class StyleGenerator
 
   def build_main(size = 16, alignment = 'left')
     select 'div.main' do
+      font_size "#{size}pt"
+      text_align alignment
+    end
+  end
+
+  def build_mainf(size = 16, alignment = 'left')
+    select 'div.mainf' do
+      font_size "#{size}pt"
+      text_align alignment
+    end
+  end
+
+  def build_mainb(size = 16, alignment = 'left')
+    select 'div.mainb' do
       font_size "#{size}pt"
       text_align alignment
     end

@@ -65,11 +65,15 @@ class MainClass
   def process_card(csv, front, back, tags, count_map: {})
     tag_helper = TagHelper.new(tags: tags)
     tag_helper.index_enum(back)
+    if !tag_helper.enum? && tag_helper.ordered_enum?(back)
+      tag_helper.add(tag_helper.ordered_enum?(back) ? :EnumO : :EnumU)
+    end
 
     @reviewer.count_sentence(tag_helper, front, back)
     @reviewer.detect_sellouts(front, back) unless tag_helper.front_only?
 
-    tsv_compat_lst = build_list(tag_helper, front, back, count_map)
+    cleaned_back = tag_helper.trim_enum_markdown(back)
+    tsv_compat_lst = build_list(tag_helper, front, cleaned_back, count_map)
 
     CardPrinter.print(tsv_compat_lst)
 

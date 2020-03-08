@@ -33,21 +33,12 @@ class HtmlGenerator
     tags_html = build_tags(tag_helper) # VERIFY IF NESTED works
 
     Code.new(@highlighter).mark_codes(card_block)
-    output = html :div, :main do
+    output = html :div, :mainf do
       merge(tags_html) unless untagged
       text card_block
     end
 
     build_style(tag_helper, card_block, mark(output), :style_front)
-  end
-
-  def build_style(tag_helper, card_block, output, face)
-    style = StyleGenerator.new(
-      tag_helper,
-      @highlighter.type
-    ).send(face, card_block)
-
-    "#{style}\n#{output}"
   end
 
   def format_back(tag_helper, back_array)
@@ -63,6 +54,15 @@ class HtmlGenerator
              end
 
     build_style(tag_helper, card_block, mark(output), :style_back)
+  end
+
+  def build_style(tag_helper, card_block, output, face)
+    style = StyleGenerator.new(
+      tag_helper,
+      @highlighter.type
+    ).send(face, card_block)
+
+    "#{style}\n#{output}"
   end
 
   def build_main
@@ -104,7 +104,7 @@ class HtmlGenerator
   end
 
   def build_ol(card_block)
-    html :div, :main do
+    html :div, :mainb do
       ol do
         card_block.each_line do |line|
           li line
@@ -114,7 +114,7 @@ class HtmlGenerator
   end
 
   def build_ul(card_block)
-    html :div, :main do
+    html :div, :mainb do
       ul do
         card_block.each_line do |line|
           li line
@@ -127,7 +127,7 @@ class HtmlGenerator
     Code.new(@highlighter).mark_codes(card_block)
     untagged = tag_helper.untagged? || tag_helper.front_only?
     tags_html = build_tags(tag_helper) # VERIFY IF NESTED works
-    html :div, :main do
+    html :div, :mainb do
       merge(tags_html) unless untagged
       merge(card_block)
     end

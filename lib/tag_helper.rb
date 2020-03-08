@@ -38,8 +38,6 @@ class TagHelper
   end
 
   def index_enum(back_card)
-    # binding.pry
-
     return unless enum? || enum_detected?(back_card)
 
     type = ol? ? 'O' : 'U'
@@ -100,17 +98,19 @@ class TagHelper
   end
 
   def enum_detected?(back_card)
+    front_only_orig = @front_only
+    @front_only = true
     if back_card.is_a?(Array) && back_card.any?
       return true if ordered_enum?(back_card)
 
-      back_card.each do |element|
-        return false unless element[/^[-+*]\s.*/]
-      end
+      back_card.each { |element| return false unless element[/^[-+*]\s.*/] }
 
       return false unless enum_same_prefix?(back_card)
 
+      @enum = :EnumU
       return true
     end
+    @front_only = front_only_orig
     false
   end
 
@@ -118,8 +118,21 @@ class TagHelper
     back_card.each_with_index do |item, index|
       return false unless item.start_with?("#{index + 1}. ")
     end
+    @enum = :EnumO
     true
   end
+
+  def trim_enum_markdown(back_card)
+    if ordered_enum?(back_card)
+      return back_card.collect { |item| item.gsub(/^\d+\.\s/, '') }
+    end
+
+    back_card.collect do |item|
+      item.gsub(/^[-*+] /, '')
+    end
+  end
+
+  private
 
   def enum_same_prefix?(back_card)
     prefix = back_card.first[0, 2]

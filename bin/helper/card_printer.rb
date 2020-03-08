@@ -1,3 +1,4 @@
+# Prints the card to the console for debugging purposes
 class CardPrinter
   LOGGER = MyLogger.instance.freeze
 
