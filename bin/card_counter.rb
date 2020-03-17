@@ -2,6 +2,7 @@ require './lib/source_reader'
 require './lib/tag_helper'
 require './lib/latest_file_finder'
 require './lib/mylogger'
+require 'dotenv/load'
 
 LOGGER = MyLogger.instance
 
