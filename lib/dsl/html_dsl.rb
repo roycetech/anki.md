@@ -2,6 +2,7 @@ require './lib/dsl/indenter'
 require './lib/dsl/html_object'
 require './lib/dsl/html_dsl_extension'
 
+# HTML DSL
 class HTMLDSL
   include Indenter
 

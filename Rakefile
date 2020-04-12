@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'pry'
 
 Rake::TestTask.new do |t|
   t.libs << 'tests'
@@ -14,8 +15,9 @@ task :run do
 end
 
 # To run: 'rake rspec[./lib/myruby.rb]'
+# Creates a spec file from a ruby file.
 task :rspec, [:filename] do |_t, args|
-  puts "Args were: #{args}"
+  puts "Args were: #{args[:filename]}"
   ruby "./bin/spec_maker.rb #{args[:filename]}"
 end
 

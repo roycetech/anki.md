@@ -1,6 +1,6 @@
 require 'simplecov'
-
 SimpleCov.start
+
 UNIT_TEST = true
 
 # require './bin/main_class'

@@ -44,6 +44,7 @@ class StyleGenerator
     font_size = big_size ? 64 : 16
     alignment = big_size ? 'center' : 'left'
     front_style.styles << build_mainf(font_size, alignment)
+    front_style.styles << build_radio if @tag_helper.quiz_choice?
 
     no_tag = @tag_helper.untagged? || @tag_helper.back_only?
     front_style.styles << build_tag unless no_tag
@@ -62,6 +63,7 @@ class StyleGenerator
     font_size = big_size ? 64 : 16
     alignment = big_size ? 'center' : 'left'
     back_style.styles << build_mainb(font_size, alignment)
+    back_style.styles << build_radio if @tag_helper.quiz_choice?
 
     # back_style.styles << build_main
 
@@ -97,6 +99,7 @@ class StyleGenerator
   def build_mainf(size = 16, alignment = 'left')
     select 'div.mainf' do
       font_size "#{size}pt"
+
       text_align alignment
     end
   end
@@ -105,6 +108,12 @@ class StyleGenerator
     select 'div.mainb' do
       font_size "#{size}pt"
       text_align alignment
+    end
+  end
+
+  def build_radio
+    select 'input[type="radio"]' do
+      margin_right '10px'
     end
   end
 

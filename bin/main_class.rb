@@ -64,29 +64,38 @@ class MainClass
 
   def process_card(csv, front, back, tags, count_map: {})
     tag_helper = TagHelper.new(tags: tags)
-    tag_helper.index_enum(back)
-    if !tag_helper.enum? && tag_helper.ordered_enum?(back)
-      tag_helper.add(tag_helper.ordered_enum?(back) ? :EnumO : :EnumU)
-    end
+    cleaned_back = apply_enum_processing(tag_helper, back)
+    apply_quiz_processing(tag_helper, front, back)
 
     @reviewer.count_sentence(tag_helper, front, back)
     @reviewer.detect_sellouts(front, back) unless tag_helper.front_only?
 
-    cleaned_back = tag_helper.trim_enum_markdown(back)
     tsv_compat_lst = build_list(tag_helper, front, cleaned_back, count_map)
-
-    CardPrinter.print(tsv_compat_lst)
 
     @reviewer.register_front_card(tags, front)
     csv << tsv_compat_lst
+    tsv_compat_lst
   end
 
   private
 
+  def apply_quiz_processing(tag_helper, front, back)
+    tag_helper.add(:Quiz) if tag_helper.quiz?(front, back)
+  end
+
+  def apply_enum_processing(tag_helper, back)
+    tag_helper.index_enum(back)
+    if !tag_helper.enum? && tag_helper.ordered_enum?(back)
+      tag_helper.add(tag_helper.ordered_enum?(back) ? :EnumO : :EnumU)
+    end
+    tag_helper.trim_enum_markdown(back)
+  end
+
   def process_csv(output_absolute_path, tag_count_map, file)
     CSV.open(output_absolute_path, 'w', col_sep: "\t") do |csv|
       SourceReader.new(file).each_card do |tags, front, back|
-        process_card(csv, front, back, tags, count_map: tag_count_map)
+        output = process_card(csv, front, back, tags, count_map: tag_count_map)
+        CardPrinter.print(output)
       end
 
       @reviewer.print_all
@@ -98,7 +107,7 @@ class MainClass
 
   def build_list(tag_helper, front, back, count_map)
     tsv_compat_lst = []
-    tsv_compat_lst << @html_generator.format_front(tag_helper, front)
+    tsv_compat_lst << @html_generator.format_front(tag_helper, front, back)
     tsv_compat_lst << @html_generator.format_back(tag_helper, back)
     tsv_compat_lst << SystemTagCounter.new.count(tag_helper, map: count_map)
     tsv_compat_lst

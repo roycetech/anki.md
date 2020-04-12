@@ -1,3 +1,4 @@
+#
 class SpecMaker
   def initialize(file_info)
     @classes_modules_and_methods = file_info[:classes_modules_and_methods]
@@ -5,8 +6,8 @@ class SpecMaker
   end
 
   def write
-    puts(file_name)
-    File.open("#{file_name.sub(/lib/, 'spec')}_spec.rb", 'w') do |f|
+    # puts(file_name)
+    File.open("#{file_name.sub(/lib/, 'spec/lib')}_spec.rb", 'w') do |f|
       f.write("require '#{file_name}'\n\n")
       classes_modules_and_methods.each { |line| writer(f, line) }
       f.write('end')
@@ -15,12 +16,12 @@ class SpecMaker
 
   private
 
-  def writer(f, line)
+  def writer(file, line)
     if line.match?(/^\s*def initialize/)
     elsif line.match?(/^\s*def/)
-      f.write(method_handler(line))
+      file.write(method_handler(line))
     else
-      f.write(module_and_class_handler(line))
+      file.write(module_and_class_handler(line))
     end
   end
 
@@ -42,6 +43,7 @@ class SpecMaker
   end
 end
 
+#
 class SimpleRubyParser
   def initialize(filename, private_methods = false)
     @file = filename
@@ -120,7 +122,7 @@ class SimpleRubyParser
   end
 end
 
-puts(ARGV[0])
+# puts(ARGV[0])
 parser = if ARGV[0] == '-p'
            SimpleRubyParser.new(ARGV[1], true)
          else
@@ -129,4 +131,4 @@ parser = if ARGV[0] == '-p'
 parser.parse
 spec = SpecMaker.new(parser.to_hash)
 spec.write
-puts "#{parser.get_name} has been Spec'd!"
+puts "#{parser.calc_name} has been Spec'd!"

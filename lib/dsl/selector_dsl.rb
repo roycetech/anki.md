@@ -73,7 +73,7 @@ end
 __END__
 # Example
 output = select 'div.main' do
-  text_align 'left'
+       text_align 'left'
        font_size '16pt'
       end
 

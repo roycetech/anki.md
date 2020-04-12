@@ -26,7 +26,7 @@ describe HtmlGenerator do
                                         '</div>'
                                       ]))
       end
-    end # context
+    end
 
     context 'ordered enum' do
       let(:tag_helper_enum) { TagHelper.new(tag_line: '@Tags: EnumO') }
@@ -49,7 +49,7 @@ describe HtmlGenerator do
                                         '</div>'
                                       ]))
       end
-    end # context
+    end
 
     context 'none code' do
       let(:tag_helper) { TagHelper.new(tags: []) }
@@ -75,5 +75,5 @@ describe HtmlGenerator do
         end
       end
     end
-  end # format_back
-end # class
+  end
+end

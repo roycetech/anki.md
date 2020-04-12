@@ -52,7 +52,7 @@ class SourceParser
           procdflag_array[index] = true
         end
         break
-      end # array each block
+      end
 
       break unless found
     end
@@ -85,6 +85,7 @@ class SourceParser
   # Returns a tuple partition as array, and the matching lambda
   def check_pattern(string)
     return_value = {}
+
     @regexp_lambda.each do |pattern, proc|
       return_value[:partition] = string.partition(pattern)
       return_value[:lambda] = proc
